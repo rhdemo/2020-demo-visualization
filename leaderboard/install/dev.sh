@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "\n\n######## dashboard-ui dev ########\n"
+printf "\n\n######## leaderboard dev ########\n"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 

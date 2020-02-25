@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "\n\n######## leaderboard-ui push ########\n"
+printf "\n\n######## leaderboard push ########\n"
 
 IMAGE_REPOSITORY=${DASHBOARD_UI_IMAGE_REPOSITORY:-quay.io/redhatdemo/2020-leaderboard-ui:latest}
 

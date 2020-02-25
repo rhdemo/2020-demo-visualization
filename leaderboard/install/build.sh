@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "\n\n######## leaderboard-ui build ########\n"
+printf "\n\n######## leaderboard build ########\n"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -9,4 +9,4 @@ SOURCE_REPOSITORY_REF=${SOURCE_REPOSITORY_REF:-master}
 
 echo "Building ${IMAGE_REPOSITORY} from ${SOURCE_REPOSITORY_URL} on ${SOURCE_REPOSITORY_REF}"
 
-s2i build ${SOURCE_REPOSITORY_URL} --ref ${SOURCE_REPOSITORY_REF} --context-dir /leaderboard-ui/public centos/nginx-114-centos7 ${IMAGE_REPOSITORY}
+s2i build ${SOURCE_REPOSITORY_URL} --ref ${SOURCE_REPOSITORY_REF} --context-dir /leaderboard/public centos/nginx-114-centos7 ${IMAGE_REPOSITORY}
