@@ -5,12 +5,13 @@ export var light_color: Color = Color('13d3d7');
 var path = []
 var path_ind = 0
 const move_speed = 10
-onready var nav = get_parent()
+onready var nav = get_node("/root/Dashboard/Nav")
 func _ready():
 	add_to_group("packets")
 
 func _physics_process(delta):
 	$Mesh.get_surface_material(0).emission = light_color
+	$Particles.draw_pass_1.material.emission = light_color
 	if path_ind < path.size():
 		var move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 0.1:
