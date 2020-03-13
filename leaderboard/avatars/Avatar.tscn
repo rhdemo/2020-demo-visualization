@@ -13,7 +13,8 @@
 radius = 444.526
 height = 132.347
 
-[node name="Area2D" type="Area2D"]
+[node name="Avatar" type="Area2D"]
+scale = Vector2( 0.109701, 0.109701 )
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

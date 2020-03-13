@@ -25,6 +25,16 @@ var color_set = [
 ]
 var body_state = 0;
 
+func _init(data):
+	$Eyes.animation = data.avatar.eyes;
+	$Eyes.frame = 0;
+	$Mouth.animation = data.avatar.mouth;
+	$Mouth.frame = 0;
+	$Ears.frame = data.avatar.ears;
+	$Nose.frame = data.avatar.nose;
+	$Body.frame = data.avatar.body;
+	$Background.material.set_shader_param("light_color", color_set[data.avatar.color][0]);
+	$Background.material.set_shader_param("dark_color", color_set[data.avatar.color][1]);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
