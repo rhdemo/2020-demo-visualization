@@ -2,11 +2,37 @@
 
 <html>
 <head>
-    <title>Static</title>
+    <title>Leaderboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #leaderboard {
+            white-space: pre;
+        }
+    </style>
 </head>
 
 <body>
 <h1>Leaderboard</h1>
+<div class="leaderboard-container">
+    <code id="leaderboard"></code>
+</div>
+
+<script>
+  fetch('/api/leaderboard', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((response) => {
+    return response.json();
+  }).then((json) => {
+    writeJson(json)
+  });
+
+  function writeJson(data) {
+    const leaderboard = document.getElementById('leaderboard');
+    leaderboard.appendChild(document.createTextNode(JSON.stringify(data, null, 2)));
+  }
+</script>
 </body>
 </html>
