@@ -59,6 +59,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				aui.get_node('AvatarUIContainer/NameContainer/Name').text = data.username
 				aui.get_node('AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins/Correct').text = String(data.right)
 				aui.get_node('AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins/Incorrect').text = String(data.wrong)
+				aui.get_node('AvatarUIContainer/ScoreContainer/ScorePanel/Score').text = String(data.score)
 				aui.position = pnt.position
 				a.position.x = pnt.position.x + 200
 				a.position.y = pnt.position.y + 35
