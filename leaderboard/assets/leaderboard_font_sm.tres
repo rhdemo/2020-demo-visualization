@@ -3,5 +3,6 @@
 [ext_resource path="res://assets/SigmarOne-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 40
+size = 100
+use_filter = true
 font_data = ExtResource( 1 )

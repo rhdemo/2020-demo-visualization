@@ -4,48 +4,72 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+#light #ffcc00
+#Dark #000000
 var Avatar = load("res://avatars/Avatar.tscn")
+var AvatarUI = load("res://avatars/AvatarUI.tscn")
 var color_set = [
 	PoolColorArray([Color('e800e8'),Color('600068')]),
+	PoolColorArray([Color('ffcc00'),Color('000000')]),
 	PoolColorArray([Color('ff7c1a'),Color('5b2900')]),
 	PoolColorArray([Color('9755ff'),Color('330066')]),
+	PoolColorArray([Color('b1e200'),Color('384211')]),
 	PoolColorArray([Color('11e500'),Color('01490b')]),
+	PoolColorArray([Color('ff1d6f'),Color('5b0d2d')]),
+	PoolColorArray([Color('00ffec'),Color('03373a')]),
+	PoolColorArray([Color('f90808'),Color('470606')]),
 	PoolColorArray([Color('7be6ff'),Color('274b4f')])
 ]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HTTPRequest.request("http://127.0.0.1:8080/")
+	#$HTTPRequest.request("http://127.0.0.1:8080")
+	$HTTPRequest.request("/api/leaderboard")
+	
 
 func _on_Data_timeout():
-	$HTTPRequest.request("http://127.0.0.1:8080/")
-	#$HTTPRequest.request("http://leaderboard-aggregator-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard")
+	#$HTTPRequest.request("http://127.0.0.1:8080")
+	$HTTPRequest.request("/api/leaderboard")
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	for n in $Leaders.get_children():
-		$Leaders.remove_child(n)
-		n.queue_free()
-	var idx = 0
-	for pnt in $Ladder.get_children():
-		if idx < json.result.size():
-			var a = Avatar.instance()
-			var data = json.result[idx]
-			a.get_node('Eyes').animation = String(data.avatar.eyes);
-			a.get_node('Eyes').frame = 0;
-			a.get_node('Mouth').animation = String(data.avatar.mouth);
-			a.get_node('Mouth').frame = 0;
-			a.get_node('Ears').frame = int(data.avatar.ears);
-			a.get_node('Nose').frame = int(data.avatar.nose);
-			a.get_node('Body').frame = int(data.avatar.body);
-			a.get_node('Background').material.set_shader_param("light_color", color_set[data.avatar.color][0]);
-			a.get_node('Background').material.set_shader_param("dark_color", color_set[data.avatar.color][1]);
-			print("Position: ", pnt)
-			a.position = pnt.position
-			$Leaders.add_child(a)
-			idx = idx + 1
+	if json.result:
+		for n in $Leaders.get_children():
+			$Leaders.remove_child(n)
+			n.queue_free()
+		var idx = 0
+		for pnt in $Ladder.get_children():
+			if idx < json.result.size():
+				var a = Avatar.instance()
+				var aui = AvatarUI.instance()
+				var data = json.result[idx]
+				var emote = 0 if idx > 2 else 1
+				emote = 2 if idx > 5 else emote
+				a.get_node('Eyes').animation = String(data.avatar.eyes);
+				a.get_node('Eyes').frame = emote;
+				a.get_node('Mouth').animation = String(data.avatar.mouth);
+				a.get_node('Mouth').frame = emote;
+				a.get_node('Ears').frame = int(data.avatar.ears);
+				a.get_node('Nose').frame = int(data.avatar.nose);
+				a.get_node('Body').frame = int(data.avatar.body);
+				a.get_node('Background').material.set_shader_param("light_color", color_set[data.avatar.color][0]);
+				a.get_node('Background').material.set_shader_param("dark_color", color_set[data.avatar.color][1]);
+				aui.get_node('AvatarUIContainer/NameContainer/Name').text = data.username
+				aui.get_node('AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins/Correct').text = String(data.right)
+				aui.get_node('AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins/Incorrect').text = String(data.wrong)
+				aui.position = pnt.position
+				a.position.x = pnt.position.x + 200
+				a.position.y = pnt.position.y + 35
+				a.scale.x = 0.18
+				a.scale.y = 0.18
+				aui.scale.x = 0.25
+				aui.scale.y = 0.25
+				aui.z_index = 1
+				$Leaders.add_child(a)
+				$Leaders.add_child(aui)
+				idx = idx + 1
 
 
 func parseData(data):

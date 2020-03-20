@@ -1,109 +1,240 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://avatars/Avatar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/wrong-number-ico.png" type="Texture" id=1]
 [ext_resource path="res://assets/leaderboard_font_sm.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/wrong-number-bg.png.png" type="Texture" id=3]
+[ext_resource path="res://assets/player-score-bg.png" type="Texture" id=4]
+[ext_resource path="res://avatars/score_style.tres" type="StyleBox" id=5]
+[ext_resource path="res://avatars/correct_style.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/right-number-bg.png" type="Texture" id=7]
 [ext_resource path="res://assets/leaderboard_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/right-number-ico.png" type="Texture" id=10]
 
-[node name="AvatarUI" type="VBoxContainer"]
+[node name="AvatarUI" type="Node2D"]
+
+[node name="AvatarUIContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1920.0
-margin_bottom = 357.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Correct" type="RichTextLabel" parent="HBoxContainer"]
-margin_right = 637.0
-margin_bottom = 357.0
-size_flags_horizontal = 3
-custom_fonts/normal_font = ExtResource( 9 )
-text = "123"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-margin_left = 641.0
-margin_right = 1278.0
-margin_bottom = 357.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ViewportContainer" type="ViewportContainer" parent="HBoxContainer/CenterContainer"]
-margin_right = 700.0
-margin_bottom = 178.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="HBoxContainer/CenterContainer/ViewportContainer"]
-size = Vector2( 700, 178 )
-size_override_stretch = true
-usage = 0
-render_target_update_mode = 3
-
-[node name="Node2D" type="Node2D" parent="HBoxContainer/CenterContainer/ViewportContainer/Viewport"]
-position = Vector2( 960, 540 )
-
-[node name="AvatarUI" parent="HBoxContainer/CenterContainer/ViewportContainer/Viewport/Node2D" instance=ExtResource( 1 )]
-
-[node name="Incorrect" type="RichTextLabel" parent="HBoxContainer"]
-margin_left = 1282.0
-margin_right = 1920.0
-margin_bottom = 357.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 9 )
-text = "321"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer2" type="CenterContainer" parent="."]
-margin_top = 361.0
-margin_right = 1920.0
-margin_bottom = 718.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Score" type="RichTextLabel" parent="CenterContainer2"]
-margin_left = 960.0
-margin_top = 178.0
-margin_right = 960.0
-margin_bottom = 178.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 2 )
-text = "1234"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-margin_top = 722.0
-margin_right = 1920.0
+margin_right = 1600.0
 margin_bottom = 1080.0
+grow_horizontal = 2
+rect_min_size = Vector2( 1600, 1080 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Name" type="RichTextLabel" parent="CenterContainer"]
-margin_left = 960.0
-margin_top = 179.0
-margin_right = 960.0
-margin_bottom = 179.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 2 )
-text = "Lando Calrissian"
-scroll_active = false
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginContainer" type="MarginContainer" parent="AvatarUIContainer"]
+margin_right = 1600.0
+
+[node name="AvatarGuessContainer" type="HBoxContainer" parent="AvatarUIContainer"]
+margin_top = 4.0
+margin_right = 1600.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 1600, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="CorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_right = 396.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="CorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer"]
+margin_left = 64.0
+margin_right = 331.0
+margin_bottom = 312.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = -6
+
+[node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
+margin_left = 63.0
+margin_right = 204.0
+margin_bottom = 85.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
+margin_top = 79.0
+margin_right = 267.0
+margin_bottom = 312.0
+size_flags_vertical = 0
+
+[node name="CorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
+margin_right = 267.0
+margin_bottom = 233.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+region_rect = Rect2( 47, -1, 221.204, 220.255 )
+patch_margin_left = 88
+patch_margin_top = 89
+patch_margin_right = 106
+patch_margin_bottom = 99
+
+[node name="Correct" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
+margin_right = 267.0
+margin_bottom = 233.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.439216 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_left = 400.0
+margin_top = 52.0
+margin_right = 1200.0
+margin_bottom = 302.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="AvatarViewportContainer" type="Control" parent="AvatarUIContainer/AvatarGuessContainer/AvatarContainer"]
+margin_right = 800.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 800, 250 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="IncorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_left = 1204.0
+margin_right = 1600.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="IncorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer"]
+margin_left = 64.0
+margin_right = 331.0
+margin_bottom = 318.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = -6
+
+[node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
+margin_left = 58.0
+margin_right = 209.0
+margin_bottom = 91.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IncorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
+margin_top = 85.0
+margin_right = 267.0
+margin_bottom = 318.0
+size_flags_vertical = 0
+
+[node name="IncorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
+margin_right = 267.0
+margin_bottom = 233.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+region_rect = Rect2( 47, -1, 221.204, 220.255 )
+patch_margin_left = 88
+patch_margin_top = 89
+patch_margin_right = 106
+patch_margin_bottom = 99
+
+[node name="Incorrect" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
+margin_right = 267.0
+margin_bottom = 233.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.439216 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreContainer" type="CenterContainer" parent="AvatarUIContainer"]
+margin_left = -1.0
+margin_top = 364.0
+margin_right = 1599.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1600, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="MarginContainer" parent="AvatarUIContainer/ScoreContainer"]
+margin_left = 429.0
+margin_top = 61.0
+margin_right = 1171.0
+margin_bottom = 294.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AvatarUIContainer/ScoreContainer/PanelContainer"]
+margin_right = 742.0
+margin_bottom = 233.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( 130.904, 196.473, 930.861, 323.858 )
+patch_margin_left = 380
+patch_margin_top = 79
+patch_margin_right = 362
+patch_margin_bottom = 93
+
+[node name="Score" type="Label" parent="AvatarUIContainer/ScoreContainer/PanelContainer"]
+margin_left = 212.0
+margin_right = 529.0
+margin_bottom = 233.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameContainer" type="MarginContainer" parent="AvatarUIContainer"]
+margin_top = 724.0
+margin_right = 1600.0
+margin_bottom = 889.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Name" type="Label" parent="AvatarUIContainer/NameContainer"]
+margin_right = 1600.0
+margin_bottom = 165.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.239216, 0.239216, 0.337255, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "Rey Palpatine"
+align = 1

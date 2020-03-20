@@ -11,7 +11,7 @@ position = Vector2( 961.963, 606.858 )
 texture = ExtResource( 1 )
 
 [node name="Data" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
@@ -19,34 +19,34 @@ autostart = true
 [node name="Ladder" type="Node2D" parent="."]
 
 [node name="Leader1" type="Position2D" parent="Ladder"]
-position = Vector2( 943.411, 137.802 )
+position = Vector2( 783.987, 79.2382 )
 
 [node name="Leader2" type="Position2D" parent="Ladder"]
-position = Vector2( 1343.57, 394.855 )
+position = Vector2( 1109.32, 352.225 )
 
 [node name="Leader3" type="Position2D" parent="Ladder"]
-position = Vector2( 590.957, 381.604 )
+position = Vector2( 460.815, 345.718 )
 
 [node name="Leader4" type="Position2D" parent="Ladder"]
-position = Vector2( 246.453, 643.958 )
+position = Vector2( 122.818, 608.732 )
 
 [node name="Leader5" type="Position2D" parent="Ladder"]
-position = Vector2( 938.111, 643.958 )
+position = Vector2( 788.448, 605.479 )
 
 [node name="Leader6" type="Position2D" parent="Ladder"]
-position = Vector2( 1562.17, 637.981 )
+position = Vector2( 1421.65, 608.732 )
 
 [node name="Leader7" type="Position2D" parent="Ladder"]
-position = Vector2( 1737.39, 907.739 )
+position = Vector2( 1486.87, 880.479 )
 
 [node name="Leader8" type="Position2D" parent="Ladder"]
-position = Vector2( 1073.67, 901.232 )
+position = Vector2( 992.331, 877.225 )
 
 [node name="Leader9" type="Position2D" parent="Ladder"]
-position = Vector2( 595.398, 901.231 )
+position = Vector2( 501.045, 880.479 )
 
 [node name="Leader10" type="Position2D" parent="Ladder"]
-position = Vector2( 188.706, 904.485 )
+position = Vector2( 32.5358, 873.971 )
 
 [node name="Leaders" type="Node2D" parent="."]
 [connection signal="timeout" from="Data" to="." method="_on_Data_timeout"]
