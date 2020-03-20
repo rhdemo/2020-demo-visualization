@@ -25,12 +25,12 @@ var color_set = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$HTTPRequest.request("http://127.0.0.1:8080")
-	$HTTPRequest.request("/api/leaderboard")
+	$HTTPRequest.request("http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard")
 	
 
 func _on_Data_timeout():
 	#$HTTPRequest.request("http://127.0.0.1:8080")
-	$HTTPRequest.request("/api/leaderboard")
+	$HTTPRequest.request("http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard")
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
