@@ -12,9 +12,9 @@ endif
 dev-dashboard:
 	./dashboard/install/dev.sh
 
-.PHONY: dev-dashboard
-dev-dashboard:
-	./dashboard/install/dev.sh
+.PHONY: dev-leaderboard
+dev-leaderboard:
+	./leaderboard/install/dev.sh
 
 
 ##################################
