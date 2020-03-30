@@ -11,7 +11,7 @@ position = Vector2( 961.963, 606.858 )
 texture = ExtResource( 1 )
 
 [node name="Data" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

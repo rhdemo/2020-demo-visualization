@@ -1,9 +1,9 @@
 extends Node2D
 # http://leaderboard-aggregator-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#const API_URL = 'http://127.0.0.1:8080'
+const API_URL = 'http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard';
+
 #light #ffcc00
 #Dark #000000
 var Avatar = load("res://avatars/Avatar.tscn")
@@ -25,17 +25,18 @@ var color_set = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$HTTPRequest.request("http://127.0.0.1:8080")
-	$HTTPRequest.request("http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard")
+	$HTTPRequest.request(API_URL)
 	
 
 func _on_Data_timeout():
 	#$HTTPRequest.request("http://127.0.0.1:8080")
-	$HTTPRequest.request("http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard")
+	$HTTPRequest.request(API_URL)
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	if json.result:
+	print(json.result)
+	if len(json.result) > 0:
 		for n in $Leaders.get_children():
 			$Leaders.remove_child(n)
 			n.queue_free()
@@ -71,6 +72,10 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				$Leaders.add_child(a)
 				$Leaders.add_child(aui)
 				idx = idx + 1
+	else:
+		for n in $Leaders.get_children():
+			$Leaders.remove_child(n)
+			n.queue_free()
 
 
 func parseData(data):
