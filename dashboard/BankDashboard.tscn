@@ -1,115 +1,8 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Bank2D/hq-00.png" type="Texture" id=1]
-[ext_resource path="res://Bank2D/hq-14.png" type="Texture" id=2]
-[ext_resource path="res://Bank2D/hq-01.png" type="Texture" id=3]
-[ext_resource path="res://Bank2D/hq-10.png" type="Texture" id=4]
-[ext_resource path="res://Bank2D/hq-15.png" type="Texture" id=5]
-[ext_resource path="res://Bank2D/hq-03.png" type="Texture" id=6]
-[ext_resource path="res://Bank2D/hq-06.png" type="Texture" id=7]
-[ext_resource path="res://Bank2D/hq-12.png" type="Texture" id=8]
 [ext_resource path="res://Bank2D/world-map.png" type="Texture" id=9]
-[ext_resource path="res://Bank2D/bank01.png" type="Texture" id=10]
-[ext_resource path="res://Bank2D/bank04.png" type="Texture" id=11]
-[ext_resource path="res://Bank2D/bank02.png" type="Texture" id=12]
-[ext_resource path="res://Bank2D/bank03.png" type="Texture" id=13]
-[ext_resource path="res://Bank2D/bank06.png" type="Texture" id=14]
-[ext_resource path="res://Bank2D/bank07.png" type="Texture" id=15]
-[ext_resource path="res://Bank2D/bank08.png" type="Texture" id=16]
-[ext_resource path="res://Bank2D/bank05.png" type="Texture" id=17]
-[ext_resource path="res://Bank2D/hq-07.png" type="Texture" id=18]
-[ext_resource path="res://Bank2D/hq-13.png" type="Texture" id=19]
-[ext_resource path="res://Bank2D/hq-04.png" type="Texture" id=20]
-[ext_resource path="res://Bank2D/hq-09.png" type="Texture" id=21]
-[ext_resource path="res://Bank2D/hq-02.png" type="Texture" id=22]
-[ext_resource path="res://Bank2D/hq-11.png" type="Texture" id=23]
-[ext_resource path="res://Bank2D/hq-08.png" type="Texture" id=24]
-[ext_resource path="res://Bank2D/bank09.png" type="Texture" id=25]
-[ext_resource path="res://Bank2D/bank11.png" type="Texture" id=26]
-[ext_resource path="res://Bank2D/bank00.png" type="Texture" id=27]
-[ext_resource path="res://Bank2D/bank14.png" type="Texture" id=28]
-[ext_resource path="res://Bank2D/bank12.png" type="Texture" id=29]
-[ext_resource path="res://Bank2D/bank13.png" type="Texture" id=30]
-[ext_resource path="res://Bank2D/bank10.png" type="Texture" id=31]
-[ext_resource path="res://Bank2D/bank15.png" type="Texture" id=33]
-[ext_resource path="res://Bank2D/build/bank-build01.png" type="Texture" id=34]
-[ext_resource path="res://Bank2D/build/bank-build19.png" type="Texture" id=35]
-[ext_resource path="res://Bank2D/build/bank-build18.png" type="Texture" id=36]
-[ext_resource path="res://Bank2D/build/bank-build22.png" type="Texture" id=37]
-[ext_resource path="res://Bank2D/build/bank-build21.png" type="Texture" id=38]
-[ext_resource path="res://Bank2D/build/bank-build20.png" type="Texture" id=39]
-[ext_resource path="res://Bank2D/build/bank-build07.png" type="Texture" id=40]
-[ext_resource path="res://Bank2D/build/bank-build08.png" type="Texture" id=41]
-[ext_resource path="res://Bank2D/build/bank-build10.png" type="Texture" id=42]
-[ext_resource path="res://Bank2D/build/bank-build09.png" type="Texture" id=43]
-[ext_resource path="res://Bank2D/build/bank-build12.png" type="Texture" id=44]
-[ext_resource path="res://Bank2D/build/bank-build11.png" type="Texture" id=45]
-[ext_resource path="res://Bank2D/build/bank-build23.png" type="Texture" id=46]
-[ext_resource path="res://Bank2D/build/bank-build24.png" type="Texture" id=47]
-[ext_resource path="res://Bank2D/build/bank-build13.png" type="Texture" id=48]
-[ext_resource path="res://Bank2D/build/hq-build01.png" type="Texture" id=49]
-[ext_resource path="res://Bank2D/build/hq-build00.png" type="Texture" id=50]
-[ext_resource path="res://Bank2D/build/hq-build23.png" type="Texture" id=51]
-[ext_resource path="res://Bank2D/build/hq-build22.png" type="Texture" id=52]
-[ext_resource path="res://Bank2D/build/hq-build24.png" type="Texture" id=53]
-[ext_resource path="res://Bank2D/build/hq-build10.png" type="Texture" id=54]
-[ext_resource path="res://Bank2D/build/hq-build16.png" type="Texture" id=55]
-[ext_resource path="res://Bank2D/build/hq-build03.png" type="Texture" id=56]
-[ext_resource path="res://Bank2D/build/hq-build15.png" type="Texture" id=57]
-[ext_resource path="res://Bank2D/build/hq-build13.png" type="Texture" id=58]
-[ext_resource path="res://Bank2D/build/hq-build12.png" type="Texture" id=59]
-[ext_resource path="res://Bank2D/build/hq-build14.png" type="Texture" id=60]
-[ext_resource path="res://Bank2D/build/hq-build11.png" type="Texture" id=61]
-[ext_resource path="res://Bank2D/build/hq-build02.png" type="Texture" id=62]
-[ext_resource path="res://Bank2D/build/hq-build09.png" type="Texture" id=63]
-[ext_resource path="res://Bank2D/build/hq-build08.png" type="Texture" id=64]
+[ext_resource path="res://Bank/Bank.tscn" type="PackedScene" id=10]
 [ext_resource path="res://BankDashboard.gd" type="Script" id=65]
-[ext_resource path="res://Bank2D/build/hq-build06.png" type="Texture" id=66]
-[ext_resource path="res://Bank2D/build/hq-build07.png" type="Texture" id=67]
-[ext_resource path="res://Bank2D/build/hq-build05.png" type="Texture" id=68]
-[ext_resource path="res://Bank2D/build/hq-build04.png" type="Texture" id=69]
-[ext_resource path="res://Bank2D/build/hq-build19.png" type="Texture" id=70]
-[ext_resource path="res://Bank2D/build/hq-build18.png" type="Texture" id=71]
-[ext_resource path="res://Bank2D/build/hq-build17.png" type="Texture" id=72]
-[ext_resource path="res://Bank2D/build/hq-build20.png" type="Texture" id=73]
-[ext_resource path="res://Bank2D/build/hq-build21.png" type="Texture" id=74]
-[ext_resource path="res://Bank2D/hq-05.png" type="Texture" id=77]
-[ext_resource path="res://Bank2D/build/bank-build15.png" type="Texture" id=78]
-[ext_resource path="res://Bank2D/build/bank-build14.png" type="Texture" id=79]
-[ext_resource path="res://Bank2D/build/bank-build17.png" type="Texture" id=80]
-[ext_resource path="res://Bank2D/build/bank-build16.png" type="Texture" id=81]
-[ext_resource path="res://Bank2D/build/bank-build05.png" type="Texture" id=82]
-[ext_resource path="res://Bank2D/build/bank-build04.png" type="Texture" id=83]
-[ext_resource path="res://Bank2D/build/bank-build02.png" type="Texture" id=84]
-[ext_resource path="res://Bank2D/build/bank-build03.png" type="Texture" id=85]
-[ext_resource path="res://Bank2D/build/bank-build06.png" type="Texture" id=86]
-[ext_resource path="res://Bank2D/build/bank-build00.png" type="Texture" id=87]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 77 ), ExtResource( 7 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 4 ), ExtResource( 23 ), ExtResource( 8 ), ExtResource( 19 ), ExtResource( 2 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 50 ), ExtResource( 49 ), ExtResource( 62 ), ExtResource( 56 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 64 ), ExtResource( 63 ), ExtResource( 54 ), ExtResource( 61 ), ExtResource( 59 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 57 ), ExtResource( 55 ), ExtResource( 72 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 53 ) ],
-"loop": false,
-"name": "build",
-"speed": 12.0
-} ]
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ ExtResource( 27 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 87 ), ExtResource( 34 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 83 ), ExtResource( 82 ), ExtResource( 86 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 80 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 46 ), ExtResource( 47 ) ],
-"loop": false,
-"name": "build",
-"speed": 8.0
-} ]
 
 [node name="Dashboard" type="Node2D"]
 script = ExtResource( 65 )
@@ -117,58 +10,44 @@ script = ExtResource( 65 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Background" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 centered = false
 
 [node name="FocalPoint" type="Position2D" parent="."]
-position = Vector2( 2320, 1112 )
+position = Vector2( 2887, 1310 )
 
 [node name="Cam" type="Camera2D" parent="FocalPoint"]
 current = true
-zoom = Vector2( 2.5, 2.5 )
+zoom = Vector2( 3, 3 )
 
-[node name="HQ" type="AnimatedSprite" parent="."]
-position = Vector2( 880, 712 )
-frames = SubResource( 1 )
-animation = "build"
-offset = Vector2( 0, -100 )
+[node name="HQ" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1288, 688 )
+BankName = "Headquarters"
+Building = 0
 
-[node name="London" type="AnimatedSprite" parent="."]
-position = Vector2( 1968, 608 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="London" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2592, 528 )
+BankName = "London"
 
-[node name="Sydney" type="AnimatedSprite" parent="."]
-position = Vector2( 4224, 1792 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="Sydney" parent="." instance=ExtResource( 10 )]
+position = Vector2( 5184, 2216 )
+BankName = "Sydney"
 
-[node name="Singapore" type="AnimatedSprite" parent="."]
-position = Vector2( 3632, 1248 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="Singapore" parent="." instance=ExtResource( 10 )]
+position = Vector2( 4552, 1448 )
+BankName = "Singapore"
 
-[node name="SanFrancisco" type="AnimatedSprite" parent="."]
-position = Vector2( 240, 744 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="SanFrancisco" parent="." instance=ExtResource( 10 )]
+position = Vector2( 488, 744 )
+BankName = "San Francisco"
 
-[node name="SaoPaulo" type="AnimatedSprite" parent="."]
-position = Vector2( 1248, 1648 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="SaoPaulo" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1760, 1928 )
+BankName = "São Paulo"
 
-[node name="Frankfurt" type="AnimatedSprite" parent="."]
-position = Vector2( 2104, 720 )
-frames = SubResource( 9 )
-animation = "build"
-offset = Vector2( 0, -128 )
+[node name="Frankfurt" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2784, 552 )
+BankName = "Frankfurt"
 
 [node name="CenterPoint" type="Position2D" parent="."]
-position = Vector2( 2320, 1112 )
+position = Vector2( 2887, 1310 )
