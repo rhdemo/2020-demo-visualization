@@ -1,30 +1,57 @@
-extends Area2D
+extends Node2D
 
 enum BLDG {Headquarters, Bank, Edge};
 onready var routed = preload("res://Bank/on.png")
 onready var unrouted = preload("res://Bank/off.png")
-onready var bankAnimation = preload("res://Bank/BankAnimation.tres")
-onready var hqAnimation = preload("res://Bank/HQAnimation.tres")
 
 const MAX = 10;
 var rng = RandomNumberGenerator.new()
 var built = false
+export(SpriteFrames) var BldgAnimation
 export var BankName = "Bank Name"
 export var Network = false
 export(BLDG) var Building = BLDG.Bank;
+export(Color) var BldgColor = Color('cccccc')
+var glblPos = Vector2()
+
+var color_set = [
+	PoolColorArray([Color('e800e8'),Color('600068')]),
+	PoolColorArray([Color('ffcc00'),Color('000000')]),
+	PoolColorArray([Color('ff7c1a'),Color('5b2900')]),
+	PoolColorArray([Color('9755ff'),Color('330066')]),
+	PoolColorArray([Color('b1e200'),Color('384211')]),
+	PoolColorArray([Color('11e500'),Color('01490b')]),
+	PoolColorArray([Color('ff1d6f'),Color('5b0d2d')]),
+	PoolColorArray([Color('00ffec'),Color('03373a')]),
+	PoolColorArray([Color('f90808'),Color('470606')]),
+	PoolColorArray([Color('7be6ff'),Color('274b4f')])
+]
 
 
 func _ready():
-	$Label/LabelBG/Name.text = BankName
+	glblPos = self.global_position
+	$Label.find_node('Name').text = BankName
+	$Sprite.frames = BldgAnimation
 	match Building:
 		0:
-			$Sprite.frames = hqAnimation
-			$Label.margin_top = -227
-			$Label.margin_bottom = -144
+			$Label.margin_top = -240
+			$Label.margin_bottom = -130
+			$Sprite.modulate = BldgColor
+			$Link.visible = false
 		1:
-			$Sprite.frames = bankAnimation
-			$Label.margin_top = -185
-			$Label.margin_bottom = -103
+			$Sprite.modulate = BldgColor
+			$Link.add_point(get_parent().position)
+			$Link.add_point(-self.position)
+			#$Link.default_color = Color('f90808')
+			#$Link.width = 20
+		2:
+			$Sprite.scale = Vector2(1.0,1.0)
+			$Link.add_point(get_parent().position+Vector2(0,-10.0))
+			$Link.add_point(-self.position)
+			#$Link.default_color = Color('7be6ff')
+			$Orbit.scale = Vector2(0.25,0.25)
+			$Orbit.position = Vector2(-4, -7)
+	
 	
 #	connect("input_event", self, "on_input_event")
 
@@ -35,56 +62,58 @@ func _ready():
 		#for i in range(5):
 		#self.Locale = rng.randi_range(0,2)
 
+func buildEdges(rev=false):
+	var edgeCont = find_node('Edges')
+	if edgeCont:
+		var edges = edgeCont.get_children()
+		for edge in edges:
+			edge.build(rev)
+
 func _physics_process(delta):
-	if Network:
-		$Label/LabelBG/Connect.texture = routed
+	match Building:
+		0:
+			$Label.find_node('Connect').texture = routed
+		1:
+			$Link.points[0] = get_parent().position
+			$Link.points[1] = -self.position
+			if Network:
+				$Link.visible = true
+				$Orbit.visible = true
+				$Label.find_node('Connect').texture = routed
+			else:
+				$Link.visible = false
+				$Orbit.visible = false
+				$Label.find_node('Connect').texture = unrouted
+		2:
+			$Link.points[0] = get_parent().position+Vector2(0,-10.0)
+			$Link.points[1] = -self.position
+			if Network:
+				$Link.visible = true
+				$Orbit.visible = true
+				$Label.find_node('Connect').texture = routed
+			else:
+				$Link.visible = false
+				$Orbit.visible = false
+				$Label.find_node('Connect').texture = unrouted
+
+		
+
+func build(rev=false):
+	$Sprite.play("build", rev)
+	if Building != BLDG.Edge:
+		buildEdges(rev)
+	if rev:
+		if Building != BLDG.Edge:
+			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.interpolate_property($Orbit, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	else:
-		$Label/LabelBG/Connect.texture = unrouted
-
-func build():
-	if $Sprite.frame < 24:
-		$Sprite.play("build")
-	else:
-		$Sprite.play("build", true)
-
-func toggle_Data():
-	pass
-#	if $Data.is_stopped():
-#		$Data.start()
-#		$OmniLight.visible = true
-#		$DataBits.emitting = true
-#		$DataPipe.visible = true
-#		$DataBits.draw_pass_1.material.emission = light_color
-#	else:
-#		$Data.stop()
-#		$OmniLight.visible = false
-#		$DataBits.emitting = false
-#		$DataPipe.visible = false
-#
-
-func spawn_packet(dest):
-	pass
-#	var destination = get_parent().find_node(dest)
-#	if destination != self:
-#		var bit = packet.instance()
-#		bit.transform.origin = SpawnPos
-#		rng.randomize()
-##		bit.light_color = Color(rng.randf_range(0.1, 1.0),rng.randf_range(0.1, 1.0),rng.randf_range(0.1, 1.0))
-#		bit.light_color = Color('13d3d7')
-#		nav.add_child(bit)
-#		bit.move_to(destination.SpawnPos)
-
-
-func _on_Data_timeout():
-	#rng.randomize()
-	#$OmniLight.light_color = Color(rng.randf_range(0.1, 1.0),rng.randf_range(0.1, 1.0),rng.randf_range(0.1, 1.0))
-	spawn_packet("HQ")
-	#spawn_packet(locales[rng.randi_range(0,4)])
-
+		if Building != BLDG.Edge:
+			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$Tween.interpolate_property($Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
 
 func _on_Sprite_animation_finished():
-	$Label.visible = !$Label.visible
-	if $Label.visible:
-		$Label/LabelBG/Connect.texture = routed
-	else:
-		$Label/LabelBG/Connect.texture = unrouted
+	if Building == BLDG.Edge:
+		Network = true

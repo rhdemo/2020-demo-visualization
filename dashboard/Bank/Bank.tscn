@@ -1,91 +1,149 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Bank/off.png" type="Texture" id=1]
 [ext_resource path="res://Bank/BankLabel.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Bank/label-arrow.png" type="Texture" id=3]
 [ext_resource path="res://Bank/label-bg.png" type="Texture" id=4]
-[ext_resource path="res://Bank/BankAnimation.tres" type="SpriteFrames" id=5]
-[ext_resource path="res://Bank/Bank.gd" type="Script" id=42]
+[ext_resource path="res://Bank/Frames/Bank01Animation.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://Bank/Bank.gd" type="Script" id=6]
+[ext_resource path="res://Bank/orbit.png" type="Texture" id=7]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 39.5323
-height = 46.9551
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 26.0547, 22.96, 0, 0, 0, 0, 49.828, 16.1677, 0, 0, 0, 0, 64.1674, 5.97913, 0, 0, 0, 0, 69.073, -5.71884, 0, 0, 0, 0, 62.2806, -16.6621, 0, 0, 0, 0, 47.1865, -26.0959, 0, 0, 0, 0, 23.7906, -32.1336, 0, 0, 0, 0, -4.51095, -34.0204, 0, 0, 0, 0, -31.6804, -30.6242, 0, 0, 0, 0, -55.0763, -24.2092, 0, 0, 0, 0, -70.1705, -14.7753, 0, 0, 0, 0, -74.6987, -2.70001, 0, 0, 0, 0, -68.2837, 8.24326, 0, 0, 0, 0, -52.4349, 17.2997, 0, 0, 0, 0, -27.9069, 23.7148, 0, 0, 0, 0, -0.737411, 26.3562 )
+}
 
-[node name="Bank" type="Area2D"]
-script = ExtResource( 42 )
+[node name="Bank" type="Node2D"]
+z_index = 2
+z_as_relative = false
+script = ExtResource( 6 )
 
 [node name="Label" type="VBoxContainer" parent="."]
-visible = false
-margin_left = -84.9252
-margin_top = -185.846
-margin_right = 220.075
-margin_bottom = -103.647
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -73.7794
+margin_top = -192.705
+margin_right = 231.221
+margin_bottom = -110.506
+size_flags_vertical = 0
 custom_constants/separation = -2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelBG" type="NinePatchRect" parent="Label"]
-margin_right = 305.0
-margin_bottom = 48.0
+[node name="LabelMargin" type="MarginContainer" parent="Label"]
+margin_right = 264.0
+margin_bottom = 60.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="LabelBG" type="NinePatchRect" parent="Label/LabelMargin"]
+margin_right = 264.0
+margin_bottom = 60.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
-region_rect = Rect2( -0.75647, -1.56482, 83.0796, 60.2735 )
-patch_margin_left = 37
-patch_margin_right = 40
+region_rect = Rect2( 0.52301, 0.486685, 80.1101, 58.7726 )
+patch_margin_left = 33
+patch_margin_right = 31
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Connect" type="TextureRect" parent="Label/LabelBG"]
-margin_left = 10.0
-margin_top = 6.0
-margin_right = 55.0
-margin_bottom = 51.0
-rect_scale = Vector2( 0.8, 0.8 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="LabelContainer" type="MarginContainer" parent="Label/LabelMargin"]
+margin_right = 264.0
+margin_bottom = 60.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 5
+custom_constants/margin_left = 11
+custom_constants/margin_bottom = 5
+
+[node name="LabelHBox" type="HBoxContainer" parent="Label/LabelMargin/LabelContainer"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 244.0
+margin_bottom = 55.0
+custom_constants/separation = 15
+
+[node name="NetworkContainer" type="MarginContainer" parent="Label/LabelMargin/LabelContainer/LabelHBox"]
+margin_right = 35.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 35, 35 )
+
+[node name="Connect" type="TextureRect" parent="Label/LabelMargin/LabelContainer/LabelHBox/NetworkContainer"]
+margin_top = 7.0
+margin_right = 35.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 35, 35 )
+rect_pivot_offset = Vector2( 22, 22 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 1 )
-stretch_mode = 5
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Label/LabelBG"]
-margin_left = 54.0
-margin_top = 6.0
-margin_right = 322.0
-margin_bottom = 62.0
+[node name="Name" type="Label" parent="Label/LabelMargin/LabelContainer/LabelHBox"]
+margin_left = 50.0
+margin_right = 233.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Bank Name"
-valign = 1
+valign = 2
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelPointerCont" type="MarginContainer" parent="Label"]
-margin_top = 46.0
-margin_right = 305.0
-margin_bottom = 82.0
-custom_constants/margin_left = 69
+margin_top = 58.0
+margin_right = 83.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 18, 18 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/margin_left = 65
 
 [node name="TextureRect" type="TextureRect" parent="Label/LabelPointerCont"]
-margin_left = 69.0
-margin_right = 305.0
-margin_bottom = 36.0
+margin_left = 65.0
+margin_right = 83.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
 texture = ExtResource( 3 )
+expand = true
+
+[node name="Link" type="Line2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( 1, 0 )
+z_as_relative = false
+width = 5.0
+default_color = Color( 0.607843, 0.976471, 0.552941, 0.45098 )
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Orbit" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.52, 0.52 )
+texture = ExtResource( 7 )
+
+[node name="Path" type="Path2D" parent="Orbit"]
+scale = Vector2( 1.92308, 1.92308 )
+curve = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+use_parent_material = true
+scale = Vector2( 0.52, 0.52 )
 frames = ExtResource( 5 )
 animation = "build"
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -34 )
-shape = SubResource( 2 )
+[node name="Tween" type="Tween" parent="."]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
