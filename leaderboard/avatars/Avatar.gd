@@ -49,6 +49,13 @@ func _ready():
 	$AvatarUIContainer/NameContainer/Name.text = NameTxt
 
 func _process(delta):
+	if Rank == 1:
+		$RankImg.visible = false
+		$Crown.visible = true
+		State = STATE.Happy
+	else:
+		$RankImg.visible = true
+		$Crown.visible = false
 	$RankImg/Rank.text = String(Rank)
 	$Eyes.frame = State
 	$Mouth.frame = State

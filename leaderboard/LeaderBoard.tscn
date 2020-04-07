@@ -11,8 +11,8 @@
 [node name="Leaderboard" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 961.963, 606.858 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 961.963, 636.221 )
 texture = ExtResource( 1 )
 
 [node name="Data" type="Timer" parent="."]
@@ -24,34 +24,34 @@ autostart = true
 [node name="Ladder" type="Node2D" parent="."]
 
 [node name="Leader1" type="Position2D" parent="Ladder"]
-position = Vector2( 956.064, 118.281 )
+position = Vector2( 956.064, 144.708 )
 
 [node name="Leader2" type="Position2D" parent="Ladder"]
-position = Vector2( 1239.1, 371.746 )
+position = Vector2( 1239.1, 398.173 )
 
 [node name="Leader3" type="Position2D" parent="Ladder"]
-position = Vector2( 590.596, 365.239 )
+position = Vector2( 590.596, 391.666 )
 
 [node name="Leader4" type="Position2D" parent="Ladder"]
-position = Vector2( 252.599, 628.253 )
+position = Vector2( 252.599, 654.68 )
 
 [node name="Leader5" type="Position2D" parent="Ladder"]
-position = Vector2( 918.229, 625 )
+position = Vector2( 918.229, 651.427 )
 
 [node name="Leader6" type="Position2D" parent="Ladder"]
-position = Vector2( 1551.43, 628.253 )
+position = Vector2( 1551.43, 654.68 )
 
 [node name="Leader7" type="Position2D" parent="Ladder"]
-position = Vector2( 1616.65, 900 )
+position = Vector2( 1616.65, 926.427 )
 
 [node name="Leader8" type="Position2D" parent="Ladder"]
-position = Vector2( 1122.11, 896.746 )
+position = Vector2( 1122.11, 923.173 )
 
 [node name="Leader9" type="Position2D" parent="Ladder"]
-position = Vector2( 630.826, 900 )
+position = Vector2( 630.826, 926.427 )
 
 [node name="Leader10" type="Position2D" parent="Ladder"]
-position = Vector2( 162.317, 893.492 )
+position = Vector2( 162.317, 919.919 )
 
 [node name="Leaders" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://shaders/base_material.tres" type="Material" id=1]
 [ext_resource path="res://avatars/avatar_nose.tres" type="SpriteFrames" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/right-number-ico.png" type="Texture" id=17]
 [ext_resource path="res://assets/leaderboard_font_sm.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/leaderboard_font.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/crown.png" type="Texture" id=20]
 
 [node name="Avatar" type="Node2D"]
 show_behind_parent = true
@@ -330,3 +331,10 @@ custom_constants/shadow_offset_x = 6
 custom_constants/shadow_offset_y = 6
 text = "Rey Palpatine"
 align = 1
+uppercase = true
+
+[node name="Crown" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -615.573 )
+scale = Vector2( 5.5, 5.5 )
+texture = ExtResource( 20 )
