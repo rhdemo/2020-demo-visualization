@@ -62,20 +62,17 @@ void fragment() {
 	vec3 n_out7p0;
 	float n_out7p1;
 	{
-		vec4 _tex_read = texture( TEXTURE , UV.xy );
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
 		n_out7p0 = _tex_read.rgb;
 		n_out7p1 = _tex_read.a;
 	}
 
 // Color:19
-	vec3 n_out19p0;
-	float n_out19p1;
-	n_out19p0 = vec3(0.043137,0.050980,0.066667);
-	n_out19p1 = 1.000000;
+	vec3 n_out19p0 = vec3(0.043137, 0.050980, 0.066667);
+	float n_out19p1 = 1.000000;
 
 // VectorOp:23
-	vec3 n_out23p0;
-	n_out23p0 = n_out7p0 + n_out19p0;
+	vec3 n_out23p0 = n_out7p0 + n_out19p0;
 
 // Output:0
 	COLOR.rgb = n_out23p0;

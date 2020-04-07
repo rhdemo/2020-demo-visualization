@@ -11,7 +11,7 @@ export(SpriteFrames) var BldgAnimation
 export var BankName = "Bank Name"
 export var Network = false
 export(BLDG) var Building = BLDG.Bank;
-export(Color) var BldgColor = Color('cccccc')
+export(Color) var BldgColor = Color('00cccc')
 var glblPos = Vector2()
 
 var color_set = [
@@ -34,23 +34,23 @@ func _ready():
 	$Sprite.frames = BldgAnimation
 	match Building:
 		0:
-			$Label.margin_top = -240
-			$Label.margin_bottom = -130
-			$Sprite.modulate = BldgColor
+			$Label.margin_top = -225
+#			$Label.margin_bottom = -190
+			#$Sprite.self_modulate = BldgColor
 			$Link.visible = false
 		1:
-			$Sprite.modulate = BldgColor
+			#$Sprite.self_modulate = BldgColor
 			$Link.add_point(get_parent().position)
 			$Link.add_point(-self.position)
 			#$Link.default_color = Color('f90808')
 			#$Link.width = 20
 		2:
-			$Sprite.scale = Vector2(1.0,1.0)
+			$Sprite.scale = Vector2(0.6,0.6)
 			$Link.add_point(get_parent().position+Vector2(0,-10.0))
 			$Link.add_point(-self.position)
 			#$Link.default_color = Color('7be6ff')
-			$Orbit.scale = Vector2(0.25,0.25)
-			$Orbit.position = Vector2(-4, -7)
+			$Sprite/Orbit.scale = Vector2(1,1)
+			$Sprite/Orbit.position = Vector2(-4, -7)
 	
 	
 #	connect("input_event", self, "on_input_event")
@@ -78,42 +78,46 @@ func _physics_process(delta):
 			$Link.points[1] = -self.position
 			if Network:
 				$Link.visible = true
-				$Orbit.visible = true
+				$Sprite/Orbit.visible = true
 				$Label.find_node('Connect').texture = routed
 			else:
 				$Link.visible = false
-				$Orbit.visible = false
+				$Sprite/Orbit.visible = false
 				$Label.find_node('Connect').texture = unrouted
 		2:
 			$Link.points[0] = get_parent().position+Vector2(0,-10.0)
 			$Link.points[1] = -self.position
 			if Network:
 				$Link.visible = true
-				$Orbit.visible = true
+				$Sprite/Orbit.visible = true
 				$Label.find_node('Connect').texture = routed
+				if $Sprite.animation != "sync" and $Sprite.frame == 42:
+					$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+					$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+					$Tween.start()
+					$Sprite.play("sync")
 			else:
 				$Link.visible = false
-				$Orbit.visible = false
+				$Sprite/Orbit.visible = false
 				$Label.find_node('Connect').texture = unrouted
 
 		
 
 func build(rev=false):
-	$Sprite.play("build", rev)
-	if Building != BLDG.Edge:
-		buildEdges(rev)
 	if rev:
 		if Building != BLDG.Edge:
 			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			buildEdges(rev)
 		$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		$Tween.interpolate_property($Orbit, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		Network = false
 	else:
 		if Building != BLDG.Edge:
 			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$Tween.interpolate_property($Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			buildEdges()
+		else:
+			Network = true
+	$Sprite.play("build", rev)
 	$Tween.start()
-
-func _on_Sprite_animation_finished():
-	if Building == BLDG.Edge:
-		Network = true

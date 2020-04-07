@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/wrong-number-ico.png" type="Texture" id=1]
 [ext_resource path="res://assets/leaderboard_font_sm.tres" type="DynamicFont" id=2]
@@ -7,17 +7,20 @@
 [ext_resource path="res://avatars/score_style.tres" type="StyleBox" id=5]
 [ext_resource path="res://avatars/correct_style.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/right-number-bg.png" type="Texture" id=7]
+[ext_resource path="res://avatars/AvatarUI.gd" type="Script" id=8]
 [ext_resource path="res://assets/leaderboard_font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/right-number-ico.png" type="Texture" id=10]
 
 [node name="AvatarUI" type="Node2D"]
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 8 )
 
 [node name="AvatarUIContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1600.0
 margin_bottom = 1080.0
-grow_horizontal = 2
+grow_horizontal = 0
 rect_min_size = Vector2( 1600, 1080 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -40,22 +43,22 @@ size_flags_vertical = 3
 custom_constants/separation = -100
 
 [node name="CorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_right = 500.0
-margin_bottom = 378.0
+margin_right = 400.0
+margin_bottom = 344.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="CorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer"]
-margin_left = 102.0
-margin_right = 398.0
-margin_bottom = 378.0
+margin_left = 59.0
+margin_right = 340.0
+margin_bottom = 344.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = -6
 
 [node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
-margin_left = 77.0
-margin_right = 218.0
+margin_left = 70.0
+margin_right = 211.0
 margin_bottom = 85.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -66,13 +69,13 @@ __meta__ = {
 
 [node name="CorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
 margin_top = 79.0
-margin_right = 296.0
-margin_bottom = 378.0
+margin_right = 281.0
+margin_bottom = 344.0
 size_flags_vertical = 0
 
 [node name="CorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
-margin_right = 296.0
-margin_bottom = 299.0
+margin_right = 281.0
+margin_bottom = 265.0
 rect_min_size = Vector2( 50, 80 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -84,8 +87,8 @@ patch_margin_right = 106
 patch_margin_bottom = 99
 
 [node name="Correct" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
-margin_right = 296.0
-margin_bottom = 299.0
+margin_right = 281.0
+margin_bottom = 265.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/normal = ExtResource( 6 )
@@ -100,38 +103,38 @@ __meta__ = {
 }
 
 [node name="AvatarContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_left = 400.0
+margin_left = 300.0
 margin_top = 110.0
-margin_right = 1200.0
+margin_right = 1300.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
 [node name="AvatarViewportContainer" type="Control" parent="AvatarUIContainer/AvatarGuessContainer/AvatarContainer"]
-margin_right = 800.0
+margin_right = 1000.0
 margin_bottom = 250.0
-rect_min_size = Vector2( 800, 250 )
+rect_min_size = Vector2( 1000, 250 )
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="IncorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_left = 1100.0
+margin_left = 1200.0
 margin_right = 1600.0
-margin_bottom = 384.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="IncorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer"]
-margin_left = 102.0
-margin_right = 398.0
-margin_bottom = 384.0
+margin_left = 59.0
+margin_right = 340.0
+margin_bottom = 350.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = -6
 
 [node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
-margin_left = 72.0
-margin_right = 223.0
+margin_left = 65.0
+margin_right = 216.0
 margin_bottom = 91.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -142,13 +145,13 @@ __meta__ = {
 
 [node name="IncorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
 margin_top = 85.0
-margin_right = 296.0
-margin_bottom = 384.0
+margin_right = 281.0
+margin_bottom = 350.0
 size_flags_vertical = 0
 
 [node name="IncorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
-margin_right = 296.0
-margin_bottom = 299.0
+margin_right = 281.0
+margin_bottom = 265.0
 rect_min_size = Vector2( 50, 80 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -160,8 +163,8 @@ patch_margin_right = 106
 patch_margin_bottom = 99
 
 [node name="Incorrect" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
-margin_right = 296.0
-margin_bottom = 299.0
+margin_right = 281.0
+margin_bottom = 265.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/normal = ExtResource( 6 )
@@ -176,9 +179,8 @@ __meta__ = {
 }
 
 [node name="ScoreContainer" type="CenterContainer" parent="AvatarUIContainer"]
-margin_left = -1.0
 margin_top = 248.0
-margin_right = 1599.0
+margin_right = 1600.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 1600, 0 )
 size_flags_horizontal = 4
@@ -189,13 +191,13 @@ __meta__ = {
 
 [node name="ScorePanel" type="MarginContainer" parent="AvatarUIContainer/ScoreContainer"]
 margin_left = 429.0
-margin_top = 86.0
+margin_top = 103.0
 margin_right = 1171.0
-margin_bottom = 385.0
+margin_bottom = 368.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="AvatarUIContainer/ScoreContainer/ScorePanel"]
 margin_right = 742.0
-margin_bottom = 299.0
+margin_bottom = 265.0
 rect_min_size = Vector2( 50, 80 )
 size_flags_horizontal = 3
 texture = ExtResource( 4 )
@@ -206,13 +208,14 @@ patch_margin_right = 362
 patch_margin_bottom = 93
 
 [node name="Score" type="Label" parent="AvatarUIContainer/ScoreContainer/ScorePanel"]
-margin_left = 198.0
-margin_right = 544.0
-margin_bottom = 299.0
+margin_left = 205.0
+margin_right = 536.0
+margin_bottom = 265.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 6
 custom_constants/shadow_offset_y = 6

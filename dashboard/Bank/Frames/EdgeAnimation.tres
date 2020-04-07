@@ -1,40 +1,40 @@
 [gd_resource type="SpriteFrames" load_steps=27 format=2]
 
-[ext_resource path="res://Bank2D/build/edge-build17.png" type="Texture" id=1]
-[ext_resource path="res://Bank2D/build/edge-build08.png" type="Texture" id=2]
-[ext_resource path="res://Bank2D/build/edge-build18.png" type="Texture" id=3]
-[ext_resource path="res://Bank2D/build/edge-build03.png" type="Texture" id=4]
-[ext_resource path="res://Bank2D/build/edge-build10.png" type="Texture" id=5]
-[ext_resource path="res://Bank2D/build/edge-build04.png" type="Texture" id=6]
-[ext_resource path="res://Bank2D/build/edge-build11.png" type="Texture" id=7]
-[ext_resource path="res://Bank2D/build/edge-build13.png" type="Texture" id=8]
-[ext_resource path="res://Bank2D/build/edge-build20.png" type="Texture" id=9]
-[ext_resource path="res://Bank2D/build/edge-build01.png" type="Texture" id=10]
-[ext_resource path="res://Bank2D/build/edge-build02.png" type="Texture" id=11]
-[ext_resource path="res://Bank2D/build/edge-build07.png" type="Texture" id=12]
-[ext_resource path="res://Bank2D/build/edge-build21.png" type="Texture" id=13]
-[ext_resource path="res://Bank2D/build/edge-build23.png" type="Texture" id=14]
-[ext_resource path="res://Bank2D/build/edge-build09.png" type="Texture" id=15]
-[ext_resource path="res://Bank2D/build/edge-build15.png" type="Texture" id=16]
-[ext_resource path="res://Bank2D/build/edge-build06.png" type="Texture" id=17]
-[ext_resource path="res://Bank2D/build/edge-build16.png" type="Texture" id=18]
-[ext_resource path="res://Bank2D/build/edge-build19.png" type="Texture" id=19]
-[ext_resource path="res://Bank2D/build/edge-build24.png" type="Texture" id=20]
-[ext_resource path="res://Bank2D/build/edge-build12.png" type="Texture" id=21]
-[ext_resource path="res://Bank2D/build/edge-build00.png" type="Texture" id=22]
-[ext_resource path="res://Bank2D/build/edge-build22.png" type="Texture" id=23]
-[ext_resource path="res://Bank2D/build/edge-build14.png" type="Texture" id=24]
-[ext_resource path="res://Bank2D/build/edge-build05.png" type="Texture" id=25]
-[ext_resource path="res://Bank2D/build/edge-build25.png" type="Texture" id=26]
+[ext_resource path="res://Bank/Frames/Edge/build12.png" type="Texture" id=1]
+[ext_resource path="res://Bank/Frames/Edge/build13.png" type="Texture" id=2]
+[ext_resource path="res://Bank/Frames/Edge/build14.png" type="Texture" id=3]
+[ext_resource path="res://Bank/Frames/Edge/build15.png" type="Texture" id=4]
+[ext_resource path="res://Bank/Frames/Edge/build16.png" type="Texture" id=5]
+[ext_resource path="res://Bank/Frames/Edge/build17.png" type="Texture" id=6]
+[ext_resource path="res://Bank/Frames/Edge/build08.png" type="Texture" id=7]
+[ext_resource path="res://Bank/Frames/Edge/build02.png" type="Texture" id=8]
+[ext_resource path="res://Bank/Frames/Edge/build03.png" type="Texture" id=9]
+[ext_resource path="res://Bank/Frames/Edge/build25.png" type="Texture" id=10]
+[ext_resource path="res://Bank/Frames/Edge/build19.png" type="Texture" id=11]
+[ext_resource path="res://Bank/Frames/Edge/build20.png" type="Texture" id=12]
+[ext_resource path="res://Bank/Frames/Edge/build01.png" type="Texture" id=13]
+[ext_resource path="res://Bank/Frames/Edge/build00.png" type="Texture" id=14]
+[ext_resource path="res://Bank/Frames/Edge/build06.png" type="Texture" id=15]
+[ext_resource path="res://Bank/Frames/Edge/build23.png" type="Texture" id=16]
+[ext_resource path="res://Bank/Frames/Edge/build24.png" type="Texture" id=17]
+[ext_resource path="res://Bank/Frames/Edge/build04.png" type="Texture" id=18]
+[ext_resource path="res://Bank/Frames/Edge/build05.png" type="Texture" id=19]
+[ext_resource path="res://Bank/Frames/Edge/build07.png" type="Texture" id=20]
+[ext_resource path="res://Bank/Frames/Edge/build09.png" type="Texture" id=21]
+[ext_resource path="res://Bank/Frames/Edge/build21.png" type="Texture" id=22]
+[ext_resource path="res://Bank/Frames/Edge/build22.png" type="Texture" id=23]
+[ext_resource path="res://Bank/Frames/Edge/build18.png" type="Texture" id=24]
+[ext_resource path="res://Bank/Frames/Edge/build10.png" type="Texture" id=25]
+[ext_resource path="res://Bank/Frames/Edge/build11.png" type="Texture" id=26]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 20 ), ExtResource( 26 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "sync",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 8 ), ExtResource( 24 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 20 ) ],
+"frames": [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "build",
 "speed": 12.0

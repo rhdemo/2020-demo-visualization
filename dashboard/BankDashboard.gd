@@ -4,6 +4,7 @@ var wide_zoom = Vector2(3.0, 3.0)
 var narrow_zoom = Vector2(0.75,0.75)
 var zoom_time = 1
 var move_time = 1
+var edge_scale = 0.6
 var scene = 0
 var ldnEdges
 
@@ -25,10 +26,18 @@ func _input(event):
 			if(scene > 0):
 				scene = scene - 1
 				run_scene(scene, true)
-#		if event.pressed and event.scancode == KEY_SPACE:
-#			$SanFrancisco/Edge1.build()
-#			$SanFrancisco/Edge2.build()
-#			$SanFrancisco/Edge3.build()
+		if event.pressed and event.scancode == KEY_UP:
+			$Tween.interpolate_property($HQ/Edges/Edge1.get_node("Sprite"), "scale", $HQ/Edges/Edge1.get_node("Sprite").scale, Vector2(2.0,2.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			for bank in $HQ/Banks.get_children():
+				for edge in bank.get_node("Edges").get_children():
+					$Tween.interpolate_property(edge.get_node("Sprite"), "scale", edge.get_node("Sprite").scale, Vector2(2.0,2.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.start()
+		if event.pressed and event.scancode == KEY_DOWN:
+			$Tween.interpolate_property($HQ/Edges/Edge1.get_node("Sprite"), "scale", $HQ/Edges/Edge1.get_node("Sprite").scale, Vector2(edge_scale,edge_scale), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			for bank in $HQ/Banks.get_children():
+				for edge in bank.get_node("Edges").get_children():
+					$Tween.interpolate_property(edge.get_node("Sprite"), "scale", edge.get_node("Sprite").scale, Vector2(edge_scale,edge_scale), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.start()
 #		if event.pressed and event.scancode == KEY_1:
 #			pass
 #		if event.pressed and event.scancode == KEY_2:
@@ -43,74 +52,73 @@ func _input(event):
 
 func run_scene(scene,reverse):
 	match scene:
-		0:
+		0: #Opening Global Map
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $CenterPoint.position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			if reverse:
 				$HQ.build(reverse)
 				$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, wide_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-		1:
+		1: #Zoom to HQ
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ.build()
-			$HQ.buildEdges()
-			$HQ.Network = true
-			if reverse:
+			if !reverse:
+				$HQ.build()
+				$HQ.Network = true
+			else:
 				$HQ/Banks/London.build(reverse)
-		2:
+		2: #Pan to London
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/London.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ/Banks/London.build()
-			$HQ/Banks/London.buildEdges()
-			$HQ/Banks/London.Network = true
-			if reverse:
+			if !reverse:
+				$HQ/Banks/London.build()
+				$HQ/Banks/London.Network = true
+			else:
 				$HQ/Banks/Sydney.build(reverse)
-		3:
+		3: #Pan to Sydney
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/Sydney.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ/Banks/Sydney.build()
-			$HQ/Banks/Sydney.buildEdges()
-			$HQ/Banks/Sydney.Network = true
-			if reverse:
+			if !reverse:
+				$HQ/Banks/Sydney.build()
+				$HQ/Banks/Sydney.Network = true
+			else:
 				$HQ/Banks/Singapore.build(reverse)
-		4:
+		4: #Pan to Singapore
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/Singapore.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ/Banks/Singapore.build()
-			$HQ/Banks/Singapore.buildEdges()
-			$HQ/Banks/Singapore.Network = true
-			if reverse:
+			if !reverse:
+				$HQ/Banks/Singapore.build()
+				$HQ/Banks/Singapore.Network = true
+			else:
 				$HQ/Banks/SanFrancisco.build(reverse)
-		5:
+		5: #Pan to SF
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/SanFrancisco.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ/Banks/SanFrancisco.build()
-			$HQ/Banks/SanFrancisco.buildEdges()
-			$HQ/Banks/SanFrancisco.Network = true
-			if reverse:
+			if !reverse:
+				$HQ/Banks/SanFrancisco.build()
+				$HQ/Banks/SanFrancisco.Network = true
+			else:
 				$HQ/Banks/SaoPaulo.build(reverse)
-		6:
+		6: #Pan to SaoPaulo
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/SaoPaulo.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-			$HQ/Banks/SaoPaulo.build()
-			$HQ/Banks/SaoPaulo.buildEdges()
-			$HQ/Banks/SaoPaulo.Network = true
-			if reverse:
+			if !reverse:
+				$HQ/Banks/SaoPaulo.build()
+				$HQ/Banks/SaoPaulo.Network = true
+			else:
 				$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		7:
+		7: #Global Map
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $CenterPoint.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, wide_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
 			if reverse:
-				$HQ/Banks/SanFrancisco.buildEdges(reverse)
-		8:
+				$HQ/Banks/Frankfurt.build(reverse)
+		8: #Zoom and Build Frankfurt
 			if !reverse:
 				$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/Frankfurt.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				$Tween.start()
 				$HQ/Banks/Frankfurt.build()
-				$HQ/Banks/Frankfurt.buildEdges()
 				$HQ/Banks/Frankfurt.Network = true
 			if reverse:
 				$HQ/Banks/London.Network = true
@@ -118,7 +126,7 @@ func run_scene(scene,reverse):
 					$HQ/Banks/Frankfurt/Edges.remove_child(edge)
 					$HQ/Banks/London/Edges.add_child(edge)
 					edge.position = edge.position - ($HQ/Banks/London/Edges.global_position - $HQ/Banks/Frankfurt/Edges.global_position)
-		9:
+		9: #Disconnect London
 			if !reverse:
 				$HQ/Banks/London.Network = false
 				for edge in ldnEdges:
@@ -127,7 +135,9 @@ func run_scene(scene,reverse):
 					edge.position = edge.position + ($HQ/Banks/London/Edges.global_position - $HQ/Banks/Frankfurt/Edges.global_position)
 			if reverse:
 				$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		10:
+				$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ/Banks/Frankfurt.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				$Tween.start()
+		10: #Global View
 			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $CenterPoint.position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, wide_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()

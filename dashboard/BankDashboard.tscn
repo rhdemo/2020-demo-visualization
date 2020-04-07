@@ -8,7 +8,7 @@
 [ext_resource path="res://Bank/Frames/Bank04Animation.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Bank/Frames/Bank05Animation.tres" type="SpriteFrames" id=7]
 [ext_resource path="res://Bank/Frames/Bank06Animation.tres" type="SpriteFrames" id=8]
-[ext_resource path="res://Bank2D/world-map.png" type="Texture" id=9]
+[ext_resource path="res://assets/world-map.png" type="Texture" id=9]
 [ext_resource path="res://Bank/Bank.tscn" type="PackedScene" id=10]
 [ext_resource path="res://BankDashboard.gd" type="Script" id=65]
 
@@ -45,6 +45,14 @@ Building = 2
 
 [node name="Banks" type="Node2D" parent="HQ"]
 
+[node name="Frankfurt" parent="HQ/Banks" instance=ExtResource( 10 )]
+position = Vector2( 1494.78, -123 )
+BldgAnimation = ExtResource( 8 )
+BankName = "Frankfurt"
+
+[node name="Edges" type="Node2D" parent="HQ/Banks/Frankfurt"]
+position = Vector2( -3.09944e-06, 0 )
+
 [node name="London" parent="HQ/Banks" instance=ExtResource( 10 )]
 position = Vector2( 1327.1, -180.87 )
 BldgAnimation = ExtResource( 5 )
@@ -60,6 +68,7 @@ Building = 2
 
 [node name="Edge2" parent="HQ/Banks/London/Edges" instance=ExtResource( 10 )]
 position = Vector2( 196.221, -144.13 )
+z_as_relative = false
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
@@ -68,13 +77,13 @@ position = Vector2( 56, 92.87 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
-[node name="Edge4" parent="HQ/Banks/London/Edges" instance=ExtResource( 10 )]
-position = Vector2( 336, 97.8489 )
+[node name="Edge5" parent="HQ/Banks/London/Edges" instance=ExtResource( 10 )]
+position = Vector2( 377.779, 23.87 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
-[node name="Edge5" parent="HQ/Banks/London/Edges" instance=ExtResource( 10 )]
-position = Vector2( 377.779, 23.87 )
+[node name="Edge4" parent="HQ/Banks/London/Edges" instance=ExtResource( 10 )]
+position = Vector2( 336, 97.8489 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
@@ -129,24 +138,24 @@ BldgAnimation = ExtResource( 3 )
 Building = 2
 
 [node name="SanFrancisco" parent="HQ/Banks" instance=ExtResource( 10 )]
-position = Vector2( -787.918, 51.13 )
+position = Vector2( -745.22, 50.9238 )
 BldgAnimation = ExtResource( 2 )
 BankName = "San Francisco"
 
 [node name="Edges" type="Node2D" parent="HQ/Banks/SanFrancisco"]
 
-[node name="Edge1" parent="HQ/Banks/SanFrancisco/Edges" instance=ExtResource( 10 )]
-position = Vector2( 2.6983, 80 )
+[node name="Edge2" parent="HQ/Banks/SanFrancisco/Edges" instance=ExtResource( 10 )]
+position = Vector2( 105.22, -79.7938 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
-[node name="Edge2" parent="HQ/Banks/SanFrancisco/Edges" instance=ExtResource( 10 )]
-position = Vector2( 82.6983, -55.9312 )
+[node name="Edge1" parent="HQ/Banks/SanFrancisco/Edges" instance=ExtResource( 10 )]
+position = Vector2( -38.7794, 80.2062 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
 [node name="Edge3" parent="HQ/Banks/SanFrancisco/Edges" instance=ExtResource( 10 )]
-position = Vector2( 114.698, 26.3562 )
+position = Vector2( 170.221, 56.2062 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
 
@@ -171,14 +180,6 @@ Building = 2
 position = Vector2( -408, -118.13 )
 BldgAnimation = ExtResource( 3 )
 Building = 2
-
-[node name="Frankfurt" parent="HQ/Banks" instance=ExtResource( 10 )]
-position = Vector2( 1494.78, -123 )
-BldgAnimation = ExtResource( 8 )
-BankName = "Frankfurt"
-
-[node name="Edges" type="Node2D" parent="HQ/Banks/Frankfurt"]
-position = Vector2( -3.09944e-06, 0 )
 
 [node name="CenterPoint" type="Position2D" parent="."]
 position = Vector2( 2887, 1310 )

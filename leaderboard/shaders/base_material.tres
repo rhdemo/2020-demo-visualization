@@ -7,4 +7,4 @@ resource_local_to_scene = true
 resource_name = "base_material"
 shader = ExtResource( 1 )
 shader_param/light_color = Color( 0.482353, 0.901961, 1, 1 )
-shader_param/dark_color = Color( 0.152941, 0.294118, 0.309804, 1 )
+shader_param/dark_color = Color( 0.164706, 0.0627451, 0.219608, 1 )
