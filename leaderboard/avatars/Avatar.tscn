@@ -116,7 +116,7 @@ size_flags_vertical = 0
 
 [node name="AvatarGuessContainer" type="HBoxContainer" parent="AvatarUIContainer"]
 margin_top = -112.0
-margin_right = 2134.0
+margin_right = 1800.0
 margin_bottom = 360.0
 rect_min_size = Vector2( 1800, 0 )
 size_flags_horizontal = 3
@@ -125,15 +125,15 @@ custom_constants/separation = -100
 alignment = 1
 
 [node name="CorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_right = 567.0
+margin_right = 400.0
 margin_bottom = 378.0
 grow_horizontal = 0
 size_flags_horizontal = 7
 size_flags_vertical = 0
 
 [node name="CorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer"]
-margin_left = 135.0
-margin_right = 431.0
+margin_left = 52.0
+margin_right = 348.0
 margin_bottom = 378.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -186,10 +186,10 @@ __meta__ = {
 }
 
 [node name="AvatarContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_left = 467.0
-margin_top = 110.0
-margin_right = 1667.0
-margin_bottom = 360.0
+margin_left = 300.0
+margin_top = 111.0
+margin_right = 1500.0
+margin_bottom = 361.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -203,16 +203,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="IncorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
-margin_left = 1567.0
-margin_right = 2134.0
+margin_left = 1400.0
+margin_right = 1800.0
 margin_bottom = 384.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="IncorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer"]
-margin_left = 135.0
-margin_right = 431.0
+margin_left = 52.0
+margin_right = 348.0
 margin_bottom = 384.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -266,9 +266,9 @@ __meta__ = {
 }
 
 [node name="ScoreContainer" type="CenterContainer" parent="AvatarUIContainer"]
-margin_left = 267.0
+margin_left = 100.0
 margin_top = 248.0
-margin_right = 1867.0
+margin_right = 1700.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 1600, 0 )
 size_flags_horizontal = 4
@@ -316,13 +316,13 @@ __meta__ = {
 
 [node name="NameContainer" type="MarginContainer" parent="AvatarUIContainer"]
 margin_top = 608.0
-margin_right = 2134.0
+margin_right = 1800.0
 margin_bottom = 871.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 
 [node name="Name" type="Label" parent="AvatarUIContainer/NameContainer"]
-margin_right = 2134.0
+margin_right = 1800.0
 margin_bottom = 263.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 0.239216, 0.239216, 0.337255, 1 )

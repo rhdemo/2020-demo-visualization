@@ -1,7 +1,7 @@
 extends Node2D
 
 enum STATE{ Resting, Happy, Sad }
-enum COLOR_SET{ Red, Orange, Yellow, Green, Blue }
+enum COLOR_SET{ HotPink, Gold, Orange, Purple, LightGreen, Green, Pink, Aqua, Red, Blue }
 
 export var Key = 0;
 export var Eyes = 0;

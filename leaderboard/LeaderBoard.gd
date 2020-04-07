@@ -11,7 +11,9 @@ var Avatar = preload("res://avatars/Avatar.tscn");
 
 var leaders = []
 var board = {}
-var guesses = 0
+var correct = 0
+var incorrect = 0
+#var guesses = 0
 var players = 0
 var dollars = 0
 
@@ -28,12 +30,14 @@ func _on_Data_timeout():
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	#print(json.result)
-	if "players" in json.result:
-		players = json.result.players
-	if "guesses" in json.result:
-		guesses = json.result.guesses
-	if "dollars" in json.result:
-		dollars = json.result.dollars
+	if "total_players" in json.result:
+		players = json.result.total_players
+	if "total_rights" in json.result:
+		correct = json.result.total_rights
+	if "total_wrongs" in json.result:
+		incorrect = json.result.total_wrongs
+	if "total_dollars" in json.result:
+		dollars = json.result.total_dollars
 	if "leaders" in json.result:
 		leaders = json.result.leaders
 	if len(leaders) > 0:
@@ -109,7 +113,7 @@ func getData():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$UICont/UIBox/UI/PlayerBox/Guessers.text = String(players)
-	$UICont/UIBox/UI/GuessBox/Guesses.text = String(guesses)
+	$UICont/UIBox/UI/GuessBox/Guesses.text = String(correct + incorrect)
 	$UICont/UIBox/UI/DollarBox/Dollars.text = String(dollars)
 
 func _input(event):
