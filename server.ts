@@ -8,6 +8,7 @@ app
   })
   .static("/leaderboard", "./leaderboard/public/");
   .static("/dashboard", "./dashboard/public/");
+  .static("/avatar", "./leaderboard/avatars");
   .start({ port: 8080 });
 
 type User = {

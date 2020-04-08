@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://shaders/base_material.tres" type="Material" id=1]
 [ext_resource path="res://avatars/avatar_nose.tres" type="SpriteFrames" id=2]
@@ -20,6 +20,23 @@
 [ext_resource path="res://assets/leaderboard_font_sm.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/leaderboard_font.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/crown.png" type="Texture" id=20]
+[ext_resource path="res://avatars/smoke/smoke03.png" type="Texture" id=21]
+[ext_resource path="res://avatars/smoke/smoke00.png" type="Texture" id=22]
+[ext_resource path="res://avatars/smoke/smoke08.png" type="Texture" id=23]
+[ext_resource path="res://avatars/smoke/smoke04.png" type="Texture" id=24]
+[ext_resource path="res://avatars/smoke/smoke06.png" type="Texture" id=25]
+[ext_resource path="res://avatars/smoke/smoke05.png" type="Texture" id=26]
+[ext_resource path="res://avatars/smoke/smoke07.png" type="Texture" id=27]
+[ext_resource path="res://avatars/smoke/smoke02.png" type="Texture" id=28]
+[ext_resource path="res://avatars/smoke/smoke01.png" type="Texture" id=29]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "default",
+"speed": 24.0
+} ]
 
 [node name="Avatar" type="Node2D"]
 show_behind_parent = true
@@ -49,6 +66,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "0"
+frame = 4
 
 [node name="Eyes" type="AnimatedSprite" parent="."]
 show_behind_parent = true
@@ -72,7 +90,8 @@ material = ExtResource( 1 )
 z_index = 1
 z_as_relative = false
 frames = ExtResource( 3 )
-animation = "4"
+animation = "0"
+frame = 1
 
 [node name="RankImg" type="Sprite" parent="."]
 position = Vector2( -646.352, -566.328 )
@@ -338,3 +357,10 @@ visible = false
 position = Vector2( 0, -615.573 )
 scale = Vector2( 5.5, 5.5 )
 texture = ExtResource( 20 )
+
+[node name="Smoke" type="AnimatedSprite" parent="."]
+scale = Vector2( 9, 9 )
+frames = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="animation_finished" from="Smoke" to="." method="_on_Smoke_animation_finished"]

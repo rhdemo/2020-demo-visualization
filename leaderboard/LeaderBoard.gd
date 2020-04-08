@@ -2,7 +2,8 @@ extends Node2D
 # http://leaderboard-aggregator-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard
 
 #const API_URL = 'http://127.0.0.1:8080'
-const API_URL = 'http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard';
+#const API_URL = 'http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard';
+const API_URL = '/api/leaderboard';
 
 #light #ffcc00
 #Dark #000000
@@ -49,8 +50,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				exists = true if current.Key == int(leaders[j].pk) else exists
 			if !exists:
 				board.erase(current.Key)
-				$Leaders.remove_child(current)
-				current.queue_free()
+				current.offBoard()
 		
 		for i in leaders.size():
 			var leader = leaders[i]
@@ -74,7 +74,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				av.NumCorrect = String(leader.right)
 				av.NumIncorrect = String(leader.wrong)
 				av.NumScore = String(leader.score)
-				$Tween.interpolate_property(av, "position", av.position, $Ladder.get_child(i).position, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+				$Tween.interpolate_property(av, "position", av.position, $Ladder.get_child(i).position, 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 				$Tween.start()
 			else:
 				#print("Creating ",leader.id)

@@ -70,3 +70,21 @@ func _process(delta):
 	$AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins/Incorrect.text = NumIncorrect
 	$AvatarUIContainer/ScoreContainer/ScorePanel/Score.text = NumScore
 	$AvatarUIContainer/NameContainer/Name.text = NameTxt
+
+func offBoard():
+	$Tween.interpolate_property($Background, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Nose, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Eyes, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Body, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Ears, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Mouth, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($RankImg, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($AvatarUIContainer, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($Crown, "modulate", Color(1.0,1.0,1.0,1.0), Color(1.0,1.0,1.0,0), 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+	$Smoke.visible = true
+	$Smoke.play()
+
+func _on_Smoke_animation_finished():
+	get_parent().remove_child(self)
+	queue_free()
