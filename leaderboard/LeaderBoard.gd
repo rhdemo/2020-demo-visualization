@@ -1,9 +1,7 @@
 extends Node2D
 # http://leaderboard-aggregator-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard
 
-#const API_URL = 'http://127.0.0.1:8080'
-#const API_URL = 'http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard';
-const API_URL = '/api/leaderboard';
+var API_URL = JavaScript.eval("window.location.hostname+'/api/leaderboard'") if OS.has_feature('JavaScript') else "http://127.0.0.1:8080/api/leaderboard"
 
 #light #ffcc00
 #Dark #000000
