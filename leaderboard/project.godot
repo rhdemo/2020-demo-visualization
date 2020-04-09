@@ -17,7 +17,6 @@ _global_script_class_icons={
 
 config/name="leaderboard"
 run/main_scene="res://LeaderBoard.tscn"
-config/icon="res://icon.png"
 
 [display]
 
