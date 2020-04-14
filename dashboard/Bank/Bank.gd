@@ -4,56 +4,38 @@ enum BLDG {Headquarters, Bank, Edge};
 onready var routed = preload("res://Bank/on.png")
 onready var unrouted = preload("res://Bank/off.png")
 
-const MAX = 10;
-var rng = RandomNumberGenerator.new()
-var built = false
+export(Vector2) var RADII = Vector2(60, 40)
+var topRadii = RADII
 export(SpriteFrames) var BldgAnimation
 export var BankName = "Bank Name"
 export var Network = false
 export(BLDG) var Building = BLDG.Bank;
-export(Color) var BldgColor = Color('00cccc')
-var glblPos = Vector2()
-
-var color_set = [
-	PoolColorArray([Color('e800e8'),Color('600068')]),
-	PoolColorArray([Color('ffcc00'),Color('000000')]),
-	PoolColorArray([Color('ff7c1a'),Color('5b2900')]),
-	PoolColorArray([Color('9755ff'),Color('330066')]),
-	PoolColorArray([Color('b1e200'),Color('384211')]),
-	PoolColorArray([Color('11e500'),Color('01490b')]),
-	PoolColorArray([Color('ff1d6f'),Color('5b0d2d')]),
-	PoolColorArray([Color('00ffec'),Color('03373a')]),
-	PoolColorArray([Color('f90808'),Color('470606')]),
-	PoolColorArray([Color('7be6ff'),Color('274b4f')])
-]
-
+var destination = Vector2()
 
 func _ready():
-	glblPos = self.global_position
 	$Label.find_node('Name').text = BankName
 	$Sprite.frames = BldgAnimation
 	match Building:
 		0:
 			$Label.margin_top = -225
-#			$Label.margin_bottom = -190
-			#$Sprite.self_modulate = BldgColor
-			$Link.visible = false
-		1:
-			#$Sprite.self_modulate = BldgColor
-			$Link.add_point(get_parent().position)
-			$Link.add_point(-self.position)
-			#$Link.default_color = Color('f90808')
-			#$Link.width = 20
 		2:
 			$Sprite.scale = Vector2(0.6,0.6)
-			$Link.add_point(get_parent().position+Vector2(0,-10.0))
-			$Link.add_point(-self.position)
-			#$Link.default_color = Color('7be6ff')
-			$Sprite/Orbit.scale = Vector2(1,1)
-			$Sprite/Orbit.position = Vector2(-4, -7)
+			RADII = Vector2(40, 25)
+	destination = get_parent().position
+	$Link.setLinkPoints(self.position, destination, 20, RADII, topRadii, Building != BLDG.Headquarters)
 	
-	
-#	connect("input_event", self, "on_input_event")
+#func setLinkPoints():
+#	var segments = 20
+#	var angle = atan2(destination.y-origin.y, destination.x-origin.x)
+#	var pts = PoolVector2Array([])
+#	for seg in range(segments):
+#		pts.append(Vector2(destination.x+(RADII.x*cos(angle + (2*PI*((1.0+seg)/segments)))), destination.y+(RADII.y*sin(angle + (2*PI*((1.0+seg)/segments))))))
+#	if Building != BLDG.Headquarters:
+#		pts.append(-Vector2(self.position.x+(topRadii.x*cos(angle)), self.position.y+(topRadii.y*sin(angle))))
+#	$Link.clear_points()
+#	for pt in pts:
+#		$Link.add_point(pt)
+#		$Link/DataPath.curve.add_point(pt)
 
 #func on_input_event(camera, event, click_position, click_normal, shape_idx):
 #	var mouse_click = event as InputEventMouseButton
@@ -70,54 +52,31 @@ func buildEdges(rev=false):
 			edge.build(rev)
 
 func _physics_process(delta):
-	match Building:
-		0:
-			$Label.find_node('Connect').texture = routed
-		1:
-			$Link.points[0] = get_parent().position
-			$Link.points[1] = -self.position
-			if Network:
-				$Link.visible = true
-				$Sprite/Orbit.visible = true
-				$Label.find_node('Connect').texture = routed
-			else:
-				$Link.visible = false
-				$Sprite/Orbit.visible = false
-				$Label.find_node('Connect').texture = unrouted
-		2:
-			$Link.points[0] = get_parent().position+Vector2(0,-10.0)
-			$Link.points[1] = -self.position
-			if Network:
-				$Link.visible = true
-				$Sprite/Orbit.visible = true
-				$Label.find_node('Connect').texture = routed
-				if $Sprite.animation != "sync" and $Sprite.frame == 42:
-					$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-					$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-					$Tween.start()
-					$Sprite.play("sync")
-			else:
-				$Link.visible = false
-				$Sprite/Orbit.visible = false
-				$Label.find_node('Connect').texture = unrouted
-
-		
+	destination = get_parent().position
+	$Link.setLinkPoints(self.position, destination, 20, RADII, topRadii, Building != BLDG.Headquarters)
+	if Network:
+		$Link.linked = true
+		$Label.find_node('Connect').texture = routed
+		if Building == BLDG.Edge:
+			if $Sprite.animation != "sync" and $Sprite.frame == 42:
+				$Sprite.play("sync")
+	else:
+		$Link.linked = false
+		$Label.find_node('Connect').texture = unrouted
 
 func build(rev=false):
 	if rev:
 		if Building != BLDG.Edge:
 			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			buildEdges(rev)
-		$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Link.linked = false
 		Network = false
 	else:
 		if Building != BLDG.Edge:
 			$Tween.interpolate_property($Label, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-			$Tween.interpolate_property($Link, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
-			$Tween.interpolate_property($Sprite/Orbit, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			buildEdges()
 		else:
 			Network = true
+		$Link.linked = true
 	$Sprite.play("build", rev)
 	$Tween.start()

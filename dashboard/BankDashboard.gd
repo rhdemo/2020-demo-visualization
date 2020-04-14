@@ -1,7 +1,7 @@
 extends Node2D
 
 var wide_zoom = Vector2(3.0, 3.0)
-var narrow_zoom = Vector2(0.75,0.75)
+var narrow_zoom = Vector2(.9,.9)
 var zoom_time = 1
 var move_time = 1
 var edge_scale = 0.6

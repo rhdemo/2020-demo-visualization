@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/data-particle.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 1, Vector2( 0.501458, 1 ), -1.27562, -1.27562, 0, 0, Vector2( 1, 1 ), -0.900809, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.18
+color = Color( 0.439216, 0.984314, 0.439216, 0.784314 )
+hue_variation_curve = SubResource( 2 )
+
+[node name="Data" type="Particles2D"]
+amount = 10
+lifetime = 0.1
+process_material = SubResource( 5 )
+texture = ExtResource( 1 )

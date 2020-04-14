@@ -20,7 +20,7 @@ export (COLOR_SET) var Colors = COLOR_SET.Blue;
 
 var color_set = [
 	PoolColorArray([Color('e800e8'),Color('600068')]),
-	PoolColorArray([Color('ffcc00'),Color('000000')]),
+	PoolColorArray([Color('00cc99'),Color('000000')]),
 	PoolColorArray([Color('ff7c1a'),Color('5b2900')]),
 	PoolColorArray([Color('9755ff'),Color('330066')]),
 	PoolColorArray([Color('b1e200'),Color('384211')]),
