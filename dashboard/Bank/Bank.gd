@@ -19,10 +19,10 @@ func _ready():
 		0:
 			$Label.margin_top = -225
 		2:
-			$Sprite.scale = Vector2(0.6,0.6)
+			$Sprite.scale = Vector2(0.35,0.35)
 			RADII = Vector2(40, 25)
 	destination = get_parent().position
-	$Link.setLinkPoints(self.position, destination, 20, RADII, topRadii, Building != BLDG.Headquarters)
+	$Link.setLinkPoints(self.position, destination, 48, RADII, topRadii, Building != BLDG.Headquarters)
 	
 #func setLinkPoints():
 #	var segments = 20
@@ -53,7 +53,7 @@ func buildEdges(rev=false):
 
 func _physics_process(delta):
 	destination = get_parent().position
-	$Link.setLinkPoints(self.position, destination, 20, RADII, topRadii, Building != BLDG.Headquarters)
+	$Link.setLinkPoints(self.position, destination, 48, RADII, topRadii, Building != BLDG.Headquarters)
 	if Network:
 		$Link.linked = true
 		$Label.find_node('Connect').texture = routed

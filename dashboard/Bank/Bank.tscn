@@ -4,7 +4,7 @@
 [ext_resource path="res://Bank/BankLabel.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Bank/label-arrow.png" type="Texture" id=3]
 [ext_resource path="res://Bank/label-bg.png" type="Texture" id=4]
-[ext_resource path="res://Bank/Frames/EdgeAnimation.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://Bank/Frames/Bank02Animation.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://Bank/Bank.gd" type="Script" id=6]
 [ext_resource path="res://Bank/DataLink.tscn" type="PackedScene" id=8]
 
@@ -119,6 +119,6 @@ scale = Vector2( 1.2, 1.2 )
 z_index = 1
 frames = ExtResource( 5 )
 animation = "build"
-offset = Vector2( 0, -45 )
+offset = Vector2( 0, -50 )
 
 [node name="Tween" type="Tween" parent="."]

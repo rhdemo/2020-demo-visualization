@@ -4,7 +4,7 @@ var wide_zoom = Vector2(3.0, 3.0)
 var narrow_zoom = Vector2(.9,.9)
 var zoom_time = 1
 var move_time = 1
-var edge_scale = 0.6
+var edge_scale = 0.35
 var scene = 0
 var ldnEdges
 
@@ -27,10 +27,10 @@ func _input(event):
 				scene = scene - 1
 				run_scene(scene, true)
 		if event.pressed and event.scancode == KEY_UP:
-			$Tween.interpolate_property($HQ/Edges/Edge1.get_node("Sprite"), "scale", $HQ/Edges/Edge1.get_node("Sprite").scale, Vector2(2.0,2.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.interpolate_property($HQ/Edges/Edge1.get_node("Sprite"), "scale", $HQ/Edges/Edge1.get_node("Sprite").scale, Vector2(1.0,1.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			for bank in $HQ/Banks.get_children():
 				for edge in bank.get_node("Edges").get_children():
-					$Tween.interpolate_property(edge.get_node("Sprite"), "scale", edge.get_node("Sprite").scale, Vector2(2.0,2.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+					$Tween.interpolate_property(edge.get_node("Sprite"), "scale", edge.get_node("Sprite").scale, Vector2(1.0,1.0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
 		if event.pressed and event.scancode == KEY_DOWN:
 			$Tween.interpolate_property($HQ/Edges/Edge1.get_node("Sprite"), "scale", $HQ/Edges/Edge1.get_node("Sprite").scale, Vector2(edge_scale,edge_scale), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
