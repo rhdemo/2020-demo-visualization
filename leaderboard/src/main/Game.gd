@@ -3,7 +3,7 @@ extends Node2D
 var ws = WebSocketClient.new()
 var _write_mode = WebSocketPeer.WRITE_MODE_TEXT
 var retryTimeout = 5 # seconds
-var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/dashboard-socket'") if OS.has_feature('JavaScript') else "ws://ui-admin-hq.apps.summit-hq1.openshift.redhatkeynote.com/socket"
+var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/socket'") if OS.has_feature('JavaScript') else "ws://ui-admin-hq.apps.summit-hq1.openshift.redhatkeynote.com/socket"
 var Lobby = preload("res://src/lobby/Lobby.tscn");
 var Leaderboard = preload("res://src/leaderboard/LeaderBoard.tscn");
 var Paused = preload("res://src/paused/Paused.tscn");
