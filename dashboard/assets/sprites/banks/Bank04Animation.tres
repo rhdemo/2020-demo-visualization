@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=26 format=2]
+
+[ext_resource path="res://assets/sprites/banks/build00.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/banks/build0414.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/banks/build0421.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/banks/build0403.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/banks/build0404.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/banks/build0411.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/banks/build0407.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/banks/build0420.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/banks/build0413.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/banks/build0406.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/banks/build0409.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/banks/build0412.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/banks/build0424.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/banks/build0405.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/banks/build0419.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/banks/build0423.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/banks/build0402.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/banks/build0418.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/banks/build0416.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/banks/build0417.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/banks/build0415.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/banks/build0422.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/banks/build0410.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/banks/build0401.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/banks/build0408.png" type="Texture" id=25]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 24 ), ExtResource( 17 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 25 ), ExtResource( 11 ), ExtResource( 23 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "build",
+"speed": 8.0
+} ]

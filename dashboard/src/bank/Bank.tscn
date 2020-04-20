@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/textures/off.png" type="Texture" id=1]
+[ext_resource path="res://src/bank/Bank.gd" type="Script" id=2]
+[ext_resource path="res://src/datalink/DataLink.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/banks/Bank02Animation.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://assets/textures/label-arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/BankLabel.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/textures/label-bg.png" type="Texture" id=7]
+
+[node name="Bank" type="Node2D"]
+z_index = 2
+script = ExtResource( 2 )
+
+[node name="Label" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -73.7794
+margin_top = -199.748
+margin_right = 231.221
+margin_bottom = -117.549
+size_flags_vertical = 0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelMargin" type="MarginContainer" parent="Label"]
+margin_right = 302.0
+margin_bottom = 60.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="LabelBG" type="NinePatchRect" parent="Label/LabelMargin"]
+margin_right = 302.0
+margin_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 7 )
+region_rect = Rect2( 0.52301, 0.486685, 80.1101, 58.7726 )
+patch_margin_left = 33
+patch_margin_right = 31
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelContainer" type="MarginContainer" parent="Label/LabelMargin"]
+margin_right = 302.0
+margin_bottom = 60.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 5
+custom_constants/margin_left = 11
+custom_constants/margin_bottom = 5
+
+[node name="LabelHBox" type="HBoxContainer" parent="Label/LabelMargin/LabelContainer"]
+margin_left = 11.0
+margin_top = 5.0
+margin_right = 282.0
+margin_bottom = 55.0
+custom_constants/separation = 15
+
+[node name="NetworkContainer" type="MarginContainer" parent="Label/LabelMargin/LabelContainer/LabelHBox"]
+margin_right = 35.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 35, 35 )
+
+[node name="Connect" type="TextureRect" parent="Label/LabelMargin/LabelContainer/LabelHBox/NetworkContainer"]
+margin_top = 7.0
+margin_right = 35.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 35, 35 )
+rect_pivot_offset = Vector2( 22, 22 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Label/LabelMargin/LabelContainer/LabelHBox"]
+margin_left = 50.0
+margin_right = 271.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Bank Name"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelPointerCont" type="MarginContainer" parent="Label"]
+margin_top = 58.0
+margin_right = 83.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 18, 18 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/margin_left = 65
+
+[node name="TextureRect" type="TextureRect" parent="Label/LabelPointerCont"]
+margin_left = 65.0
+margin_right = 83.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Link" parent="." instance=ExtResource( 3 )]
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
+scale = Vector2( 1.2, 1.2 )
+z_index = 1
+frames = ExtResource( 4 )
+animation = "build"
+offset = Vector2( 0, -50 )
+
+[node name="Tween" type="Tween" parent="."]

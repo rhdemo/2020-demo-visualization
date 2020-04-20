@@ -1,0 +1,367 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://src/avatar/avatar_mouth.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/avatar/avatar_body.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/shaders/correct_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://src/avatar/avatar_eyes.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://src/avatar/avatar_ears.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://src/avatar/Avatar.gd" type="Script" id=6]
+[ext_resource path="res://assets/shaders/base_material.tres" type="Material" id=7]
+[ext_resource path="res://src/avatar/avatar_nose.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://assets/fonts/leaderboard_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/shaders/score_style.tres" type="StyleBox" id=10]
+[ext_resource path="res://src/avatar/background/background.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/avatar_rank_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/textures/avatar/player-score-bg.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/count.png" type="Texture" id=14]
+[ext_resource path="res://assets/fonts/leaderboard_font_sm.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/textures/avatar/wrong-number-bg.png.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/avatar/wrong-number-ico.png" type="Texture" id=17]
+[ext_resource path="res://assets/textures/avatar/right-number-ico.png" type="Texture" id=18]
+[ext_resource path="res://assets/textures/avatar/right-number-bg.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/crown.png" type="Texture" id=20]
+[ext_resource path="res://src/avatar/smoke/smoke08.png" type="Texture" id=21]
+[ext_resource path="res://src/avatar/smoke/smoke03.png" type="Texture" id=22]
+[ext_resource path="res://src/avatar/smoke/smoke00.png" type="Texture" id=23]
+[ext_resource path="res://src/avatar/smoke/smoke04.png" type="Texture" id=24]
+[ext_resource path="res://src/avatar/smoke/smoke06.png" type="Texture" id=25]
+[ext_resource path="res://src/avatar/smoke/smoke02.png" type="Texture" id=26]
+[ext_resource path="res://src/avatar/smoke/smoke01.png" type="Texture" id=27]
+[ext_resource path="res://src/avatar/smoke/smoke07.png" type="Texture" id=28]
+[ext_resource path="res://src/avatar/smoke/smoke05.png" type="Texture" id=29]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "default",
+"speed": 24.0
+} ]
+
+[node name="Avatar" type="Node2D"]
+show_behind_parent = true
+use_parent_material = true
+scale = Vector2( 0.18, 0.18 )
+z_index = 1
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="Body" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 2 )
+frame = 1
+
+[node name="Nose" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 8 )
+animation = "0"
+frame = 4
+
+[node name="Eyes" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 4 )
+animation = "0"
+
+[node name="Ears" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 5 )
+animation = "0"
+
+[node name="Mouth" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+material = ExtResource( 7 )
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 1 )
+animation = "0"
+frame = 1
+
+[node name="RankImg" type="Sprite" parent="."]
+position = Vector2( -646.352, -566.328 )
+scale = Vector2( 4.79979, 4.79979 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Rank" type="Label" parent="RankImg"]
+margin_right = 31.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarUIContainer" type="VBoxContainer" parent="."]
+margin_left = -900.0
+margin_right = 900.0
+margin_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 1800, 1080 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -112
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="AvatarUIContainer"]
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AvatarGuessContainer" type="HBoxContainer" parent="AvatarUIContainer"]
+margin_top = -112.0
+margin_right = 1800.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 1800, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -100
+alignment = 1
+
+[node name="CorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_right = 400.0
+margin_bottom = 378.0
+grow_horizontal = 0
+size_flags_horizontal = 7
+size_flags_vertical = 0
+
+[node name="CorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer"]
+margin_left = 52.0
+margin_right = 348.0
+margin_bottom = 378.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = -6
+
+[node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
+margin_left = 77.0
+margin_right = 218.0
+margin_bottom = 85.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel"]
+margin_top = 79.0
+margin_right = 296.0
+margin_bottom = 378.0
+size_flags_vertical = 0
+
+[node name="CorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
+margin_right = 296.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 19 )
+region_rect = Rect2( 47, -1, 221.204, 220.255 )
+patch_margin_left = 88
+patch_margin_top = 89
+patch_margin_right = 106
+patch_margin_bottom = 99
+
+[node name="Correct" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/CorrectContainer/CorrectPanel/CorrectMargins"]
+margin_right = 296.0
+margin_bottom = 299.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.439216 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_left = 300.0
+margin_top = 111.0
+margin_right = 1500.0
+margin_bottom = 361.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AvatarViewportContainer" type="Control" parent="AvatarUIContainer/AvatarGuessContainer/AvatarContainer"]
+margin_right = 1200.0
+margin_bottom = 250.0
+grow_horizontal = 2
+rect_min_size = Vector2( 1200, 250 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IncorrectContainer" type="CenterContainer" parent="AvatarUIContainer/AvatarGuessContainer"]
+margin_left = 1400.0
+margin_right = 1800.0
+margin_bottom = 384.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="IncorrectPanel" type="VBoxContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer"]
+margin_left = 52.0
+margin_right = 348.0
+margin_bottom = 384.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = -6
+
+[node name="Sprite" type="TextureRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
+margin_left = 72.0
+margin_right = 223.0
+margin_bottom = 91.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IncorrectMargins" type="MarginContainer" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel"]
+margin_top = 85.0
+margin_right = 296.0
+margin_bottom = 384.0
+size_flags_vertical = 0
+
+[node name="IncorrectBG" type="NinePatchRect" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
+margin_right = 296.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 16 )
+region_rect = Rect2( 47, -1, 221.204, 220.255 )
+patch_margin_left = 88
+patch_margin_top = 89
+patch_margin_right = 106
+patch_margin_bottom = 99
+
+[node name="Incorrect" type="Label" parent="AvatarUIContainer/AvatarGuessContainer/IncorrectContainer/IncorrectPanel/IncorrectMargins"]
+margin_right = 296.0
+margin_bottom = 299.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.439216 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreContainer" type="CenterContainer" parent="AvatarUIContainer"]
+margin_left = 100.0
+margin_top = 248.0
+margin_right = 1700.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1600, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScorePanel" type="MarginContainer" parent="AvatarUIContainer/ScoreContainer"]
+margin_left = 429.0
+margin_top = 86.0
+margin_right = 1171.0
+margin_bottom = 385.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AvatarUIContainer/ScoreContainer/ScorePanel"]
+margin_right = 742.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 50, 80 )
+size_flags_horizontal = 3
+texture = ExtResource( 13 )
+region_rect = Rect2( 130.904, 196.473, 930.861, 323.858 )
+patch_margin_left = 380
+patch_margin_top = 79
+patch_margin_right = 362
+patch_margin_bottom = 93
+
+[node name="Score" type="Label" parent="AvatarUIContainer/ScoreContainer/ScorePanel"]
+margin_left = 198.0
+margin_right = 544.0
+margin_bottom = 299.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_styles/normal = ExtResource( 10 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameContainer" type="MarginContainer" parent="AvatarUIContainer"]
+margin_top = 608.0
+margin_right = 1800.0
+margin_bottom = 871.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Name" type="Label" parent="AvatarUIContainer/NameContainer"]
+margin_right = 1800.0
+margin_bottom = 263.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.239216, 0.239216, 0.337255, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 6
+text = "Rey Palpatine"
+align = 1
+uppercase = true
+
+[node name="Crown" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -615.573 )
+scale = Vector2( 5.5, 5.5 )
+texture = ExtResource( 20 )
+
+[node name="Smoke" type="AnimatedSprite" parent="."]
+scale = Vector2( 9, 9 )
+frames = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="animation_finished" from="Smoke" to="." method="_on_Smoke_animation_finished"]

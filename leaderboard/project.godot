@@ -16,12 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="leaderboard"
-run/main_scene="res://LeaderBoard.tscn"
+run/main_scene="res://src/main/Game.tscn"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/size/test_width=1024
+window/size/test_height=768
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -34,4 +36,4 @@ limits/tcp/connect_timeout_seconds=60
 quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 environment/default_clear_color=Color( 1, 1, 1, 1 )
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://environment/default_env.tres"

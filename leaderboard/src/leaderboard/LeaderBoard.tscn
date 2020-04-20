@@ -1,0 +1,191 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/totals_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/leaderboard/LeaderBoard.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/game/leaderboard-bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/game/ico-guesses.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/game/ico-value.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/game/leaderboard-data-bg.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/game/ico-players.png" type="Texture" id=7]
+
+[node name="Leaderboard" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 3 )
+
+[node name="Data" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Ladder" type="Node2D" parent="."]
+
+[node name="Leader1" type="Position2D" parent="Ladder"]
+position = Vector2( 956.064, 135.899 )
+
+[node name="Leader2" type="Position2D" parent="Ladder"]
+position = Vector2( 1239.1, 380.555 )
+
+[node name="Leader3" type="Position2D" parent="Ladder"]
+position = Vector2( 590.596, 374.048 )
+
+[node name="Leader4" type="Position2D" parent="Ladder"]
+position = Vector2( 252.599, 637.062 )
+
+[node name="Leader5" type="Position2D" parent="Ladder"]
+position = Vector2( 918.229, 633.809 )
+
+[node name="Leader6" type="Position2D" parent="Ladder"]
+position = Vector2( 1551.43, 637.062 )
+
+[node name="Leader7" type="Position2D" parent="Ladder"]
+position = Vector2( 1707.68, 908.809 )
+
+[node name="Leader8" type="Position2D" parent="Ladder"]
+position = Vector2( 1248.37, 905.555 )
+
+[node name="Leader9" type="Position2D" parent="Ladder"]
+position = Vector2( 707.17, 908.809 )
+
+[node name="Leader10" type="Position2D" parent="Ladder"]
+position = Vector2( 221.044, 902.301 )
+
+[node name="Leaders" type="Node2D" parent="."]
+
+[node name="UICont" type="MarginContainer" parent="."]
+margin_top = 85.2359
+margin_right = 665.0
+margin_bottom = 191.236
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UIBG" type="NinePatchRect" parent="UICont"]
+margin_right = 665.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+patch_margin_right = 204
+
+[node name="UIBox" type="MarginContainer" parent="UICont"]
+margin_right = 665.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/margin_right = 35
+custom_constants/margin_top = 20
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 20
+
+[node name="UI" type="HBoxContainer" parent="UICont/UIBox"]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 630.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
+margin_right = 93.0
+margin_bottom = 66.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_constants/separation = 14
+
+[node name="PlayerIco" type="TextureRect" parent="UICont/UIBox/UI/PlayerBox"]
+margin_left = -1.0
+margin_top = 7.0
+margin_right = 49.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Guessers" type="Label" parent="UICont/UIBox/UI/PlayerBox"]
+margin_left = 64.0
+margin_right = 93.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+
+[node name="GuessBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
+margin_left = 143.0
+margin_right = 236.0
+margin_bottom = 66.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+custom_constants/separation = 14
+
+[node name="GuessIco" type="TextureRect" parent="UICont/UIBox/UI/GuessBox"]
+margin_top = 8.0
+margin_right = 50.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Guesses" type="Label" parent="UICont/UIBox/UI/GuessBox"]
+margin_left = 64.0
+margin_right = 93.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+
+[node name="DollarBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
+margin_left = 286.0
+margin_right = 379.0
+margin_bottom = 66.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 14
+
+[node name="DollarIco" type="TextureRect" parent="UICont/UIBox/UI/DollarBox"]
+margin_top = 8.0
+margin_right = 50.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="Dollars" type="Label" parent="UICont/UIBox/UI/DollarBox"]
+margin_left = 64.0
+margin_right = 93.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="timeout" from="Data" to="." method="_on_Data_timeout"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
