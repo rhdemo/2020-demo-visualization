@@ -67,7 +67,11 @@ func _input(event):
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
 
-func showScene(sceneName="Lobby"):
+func showScene(sceneName="lobby"):
+	if sceneName in ["lobby","active","paused","stopped"]:
+		pass
+	else:
+		sceneName = "active"
 	for sc in $Scenes.get_children():
 		if sc.name != sceneName:
 			sc.visible = false
