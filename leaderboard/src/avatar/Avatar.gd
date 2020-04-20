@@ -57,6 +57,17 @@ func _process(delta):
 		$RankImg.visible = true
 		$Crown.visible = false
 	$RankImg/Rank.text = String(Rank)
+	if Rank < 4:
+		match Rank:
+			1:
+				$RankImg/Ordinal.text = "st"
+			2:
+				$RankImg/Ordinal.text = "nd"
+			3:
+				$RankImg/Ordinal.text = "rd"
+	else:
+		$RankImg/Ordinal.text = "th"
+	
 	$Eyes.frame = State
 	$Mouth.frame = State
 	$Eyes.animation = String(Eyes)

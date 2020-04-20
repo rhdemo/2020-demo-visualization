@@ -37,7 +37,7 @@ func _handle_data_received():
 	var res = JSON.parse(decode_data(ws.get_peer(1).get_packet())).result
 	if 'game' in res:
 		if 'state' in res.game:
-			print('Game State: ',res.game.state)
+			#print('Game State: ',res.game.state)
 			showScene(res.game.state)
 			# lobby, active, paused, stopped
 
