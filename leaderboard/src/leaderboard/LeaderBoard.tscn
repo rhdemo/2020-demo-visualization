@@ -56,9 +56,9 @@ position = Vector2( 221.044, 902.301 )
 [node name="Leaders" type="Node2D" parent="."]
 
 [node name="UICont" type="MarginContainer" parent="."]
-margin_top = 85.2359
+margin_top = 44.3277
 margin_right = 665.0
-margin_bottom = 191.236
+margin_bottom = 150.328
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
