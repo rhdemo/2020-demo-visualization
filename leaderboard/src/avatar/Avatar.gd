@@ -17,23 +17,24 @@ export var NameTxt = "Lando Calrissian";
 
 export (STATE) var State = STATE.Resting;
 export (COLOR_SET) var Colors = COLOR_SET.HotPink;
-
+var initScale = Vector2(0.18, 0.18)
 var color_set = [
 	PoolColorArray([Color('e800e8'),Color('600068')]),
-	PoolColorArray([Color('00cc99'),Color('000000')]),
+	PoolColorArray([Color('ffcc00'),Color('000000')]),
 	PoolColorArray([Color('ff7c1a'),Color('5b2900')]),
 	PoolColorArray([Color('9755ff'),Color('330066')]),
 	PoolColorArray([Color('b1e200'),Color('384211')]),
 	PoolColorArray([Color('11e500'),Color('01490b')]),
 	PoolColorArray([Color('ff1d6f'),Color('5b0d2d')]),
-	PoolColorArray([Color('00ffec'),Color('03373a')]),
+	PoolColorArray([Color('00cc99'),Color('03373a')]),
 	PoolColorArray([Color('f90808'),Color('470606')]),
 	PoolColorArray([Color('7be6ff'),Color('274b4f')])
 ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$RankImg/Rank.text = String(Rank)
+	initScale = scale
+	$RankImg/RankCont/Rank.text = String(Rank)
 	$Eyes.frame = State
 	$Mouth.frame = State
 	$Eyes.animation = String(Eyes)
@@ -56,17 +57,18 @@ func _process(delta):
 	else:
 		$RankImg.visible = true
 		$Crown.visible = false
-	$RankImg/Rank.text = String(Rank)
+	$RankImg/RankCont/Rank.text = String(Rank)
 	if Rank < 4:
 		match Rank:
 			1:
-				$RankImg/Ordinal.text = "st"
+				$RankImg/RankCont/Ordinal.text = "st"
 			2:
-				$RankImg/Ordinal.text = "nd"
+				$RankImg/RankCont/Ordinal.text = "nd"
 			3:
-				$RankImg/Ordinal.text = "rd"
+				$RankImg/RankCont/Ordinal.text = "rd"
 	else:
-		$RankImg/Ordinal.text = "th"
+		$RankImg/RankCont/Ordinal.text = "th"
+	self.scale = initScale * Vector2((42-Rank-1)/42.0,(42-Rank-1)/42.0)
 	
 	$Eyes.frame = State
 	$Mouth.frame = State

@@ -24,10 +24,10 @@ autostart = true
 [node name="Ladder" type="Node2D" parent="."]
 
 [node name="Leader1" type="Position2D" parent="Ladder"]
-position = Vector2( 956.064, 135.899 )
+position = Vector2( 956.064, 143.691 )
 
 [node name="Leader2" type="Position2D" parent="Ladder"]
-position = Vector2( 1239.1, 380.555 )
+position = Vector2( 1285.85, 380.555 )
 
 [node name="Leader3" type="Position2D" parent="Ladder"]
 position = Vector2( 590.596, 374.048 )
@@ -104,10 +104,9 @@ size_flags_vertical = 4
 custom_constants/separation = 14
 
 [node name="PlayerIco" type="TextureRect" parent="UICont/UIBox/UI/PlayerBox"]
-margin_left = -1.0
-margin_top = 7.0
-margin_right = 49.0
-margin_bottom = 57.0
+margin_top = 8.0
+margin_right = 50.0
+margin_bottom = 58.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 4
 size_flags_vertical = 4

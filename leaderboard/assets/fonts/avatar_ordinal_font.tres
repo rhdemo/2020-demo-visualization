@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/SigmarOne-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 18
+size = 64
 use_filter = true
-extra_spacing_top = -5
+extra_spacing_top = -20
 font_data = ExtResource( 1 )
