@@ -18,12 +18,22 @@ func _ready():
 	$HTTPRequest.request(API_URL)
 
 func _process(delta):
-	$UICont/UIBox/UI/PlayerBox/Guessers.text = String(players)
-	$UICont/UIBox/UI/GuessBox/Guesses.text = String(correct + incorrect)
-	$UICont/UIBox/UI/DollarBox/Dollars.text = String(dollars)
+	$UICont/UIBox/UI/PlayerBox/Guessers.text = formatNumber(players)
+	$UICont/UIBox/UI/GuessBox/Guesses.text = formatNumber(correct + incorrect)
+	$UICont/UIBox/UI/DollarBox/Dollars.text = formatNumber(dollars)
 
 func _on_Data_timeout():
 	$HTTPRequest.request(API_URL)
+func formatNumber(num):
+	var strNum = String(num)
+	var delimited = ""
+	var idx = len(strNum)
+	for i in range(idx):
+		if i%3 == 0 and i != 0:
+			delimited = "," + delimited
+		delimited = strNum[idx-i-1] + delimited
+	#print(delimited)
+	return String(delimited)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())

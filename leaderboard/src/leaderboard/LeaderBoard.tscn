@@ -68,10 +68,10 @@ __meta__ = {
 [node name="UIBG" type="NinePatchRect" parent="UICont"]
 margin_right = 665.0
 margin_bottom = 106.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 texture = ExtResource( 6 )
-patch_margin_right = 204
+region_rect = Rect2( 495.634, 1.12201, 196.685, 99.6204 )
+patch_margin_left = 46
+patch_margin_right = 43
 
 [node name="UIBox" type="MarginContainer" parent="UICont"]
 margin_right = 665.0
@@ -80,28 +80,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 custom_constants/margin_right = 35
 custom_constants/margin_top = 20
-custom_constants/margin_left = 30
+custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
 [node name="UI" type="HBoxContainer" parent="UICont/UIBox"]
-margin_left = 30.0
+margin_left = 20.0
 margin_top = 20.0
 margin_right = 630.0
 margin_bottom = 86.0
-rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
-custom_constants/separation = 50
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayerBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
-margin_right = 93.0
+margin_right = 87.0
 margin_bottom = 66.0
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 4
-custom_constants/separation = 14
+custom_constants/separation = 8
 
 [node name="PlayerIco" type="TextureRect" parent="UICont/UIBox/UI/PlayerBox"]
 margin_top = 8.0
@@ -118,8 +117,8 @@ __meta__ = {
 }
 
 [node name="Guessers" type="Label" parent="UICont/UIBox/UI/PlayerBox"]
-margin_left = 64.0
-margin_right = 93.0
+margin_left = 58.0
+margin_right = 87.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -128,12 +127,12 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 
 [node name="GuessBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
-margin_left = 143.0
-margin_right = 236.0
+margin_left = 210.0
+margin_right = 297.0
 margin_bottom = 66.0
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 4
-custom_constants/separation = 14
+custom_constants/separation = 8
 
 [node name="GuessIco" type="TextureRect" parent="UICont/UIBox/UI/GuessBox"]
 margin_top = 8.0
@@ -147,8 +146,8 @@ expand = true
 stretch_mode = 1
 
 [node name="Guesses" type="Label" parent="UICont/UIBox/UI/GuessBox"]
-margin_left = 64.0
-margin_right = 93.0
+margin_left = 58.0
+margin_right = 87.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -157,12 +156,12 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 
 [node name="DollarBox" type="HBoxContainer" parent="UICont/UIBox/UI"]
-margin_left = 286.0
-margin_right = 379.0
+margin_left = 420.0
+margin_right = 507.0
 margin_bottom = 66.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_constants/separation = 14
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_constants/separation = 8
 
 [node name="DollarIco" type="TextureRect" parent="UICont/UIBox/UI/DollarBox"]
 margin_top = 8.0
@@ -176,8 +175,8 @@ expand = true
 stretch_mode = 1
 
 [node name="Dollars" type="Label" parent="UICont/UIBox/UI/DollarBox"]
-margin_left = 64.0
-margin_right = 93.0
+margin_left = 58.0
+margin_right = 87.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
