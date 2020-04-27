@@ -109,9 +109,10 @@ func run_scene(scene,reverse):
 				$HQ/Banks/SaoPaulo.Network = true
 			else:
 				$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		7: #Global Map
-			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $CenterPoint.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-			$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, wide_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		7: #Zoom back to HQ
+			$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $HQ.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			#$Tween.interpolate_property($FocalPoint, "position", $FocalPoint.position, $CenterPoint.global_position, move_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			$Tween.interpolate_property($FocalPoint/Cam, "zoom", $FocalPoint/Cam.zoom, narrow_zoom, zoom_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
 			if reverse:
 				$HQ/Banks/Frankfurt.build(reverse)

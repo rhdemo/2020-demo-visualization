@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/main/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/lobby/Lobby.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/fonts/avatar_rank_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/totals_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/leaderboard/LeaderBoard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/paused/Paused.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/stopped/Stopped.tscn" type="PackedScene" id=6]
@@ -86,42 +86,44 @@ handle_input_locally = false
 usage = 0
 render_target_update_mode = 0
 
-[node name="Pause" parent="Scenes/stopped/Viewport" instance=ExtResource( 6 )]
+[node name="Stopped" parent="Scenes/stopped/Viewport" instance=ExtResource( 6 )]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
 margin_right = 598.0
 margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Lobby" type="Button" parent="HBoxContainer"]
-margin_right = 125.0
-margin_bottom = 54.0
+margin_right = 152.0
+margin_bottom = 72.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
 text = "Lobby"
 
 [node name="Game" type="Button" parent="HBoxContainer"]
-margin_left = 129.0
-margin_right = 242.0
-margin_bottom = 54.0
+margin_left = 156.0
+margin_right = 294.0
+margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Game"
 
 [node name="Pause" type="Button" parent="HBoxContainer"]
-margin_left = 246.0
-margin_right = 377.0
-margin_bottom = 54.0
+margin_left = 298.0
+margin_right = 458.0
+margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Pause"
 
 [node name="Stop" type="Button" parent="HBoxContainer"]
-margin_left = 381.0
-margin_right = 598.0
-margin_bottom = 54.0
+margin_left = 462.0
+margin_right = 730.0
+margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Game Over"
 [connection signal="timeout" from="connection" to="." method="_on_connection_timeout"]

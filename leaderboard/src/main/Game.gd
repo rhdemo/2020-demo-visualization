@@ -3,13 +3,13 @@ extends Node2D
 var ws = WebSocketClient.new()
 var _write_mode = WebSocketPeer.WRITE_MODE_TEXT
 var retryTimeout = 5 # seconds
-var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/socket'") if OS.has_feature('JavaScript') else "ws://ui-admin-hq.apps.summit-hq1.openshift.redhatkeynote.com/socket"
+var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/socket'") if OS.has_feature('JavaScript') else "ws://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/socket"
 var Lobby = preload("res://src/lobby/Lobby.tscn");
 var Leaderboard = preload("res://src/leaderboard/LeaderBoard.tscn");
 var Paused = preload("res://src/paused/Paused.tscn");
 var Stopped = preload("res://src/stopped/Stopped.tscn");
 
-var WS_URL = wsUrlStr if wsUrlStr.length() > 0 else "ws://ui-admin-hq.apps.summit-hq1.openshift.redhatkeynote.com/socket"
+var WS_URL = wsUrlStr if wsUrlStr.length() > 0 else "ws://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/socket"
 
 func _init():
 	self._connect()
@@ -70,6 +70,8 @@ func _input(event):
 func showScene(sceneName="lobby"):
 	if sceneName in ["lobby","active","paused","stopped"]:
 		pass
+	if sceneName == "stopped":
+		$Scenes/stopped/Viewport/Stopped.checkTotals = true
 	else:
 		sceneName = "active"
 	for sc in $Scenes.get_children():
@@ -79,13 +81,14 @@ func showScene(sceneName="lobby"):
 			sc.visible = true
 
 func _on_Lobby_pressed():
-	showScene("Lobby")
+	showScene("lobby")
 
 func _on_Game_pressed():
-	showScene("Leaderboard")
+	showScene("active")
 
 func _on_Pause_pressed():
-	showScene("Paused")
+	showScene("paused")
 
 func _on_Stop_pressed():
-	showScene("Stopped")
+	$Scenes/stopped/Viewport/Stopped.checkTotals = true
+	showScene("stopped")
