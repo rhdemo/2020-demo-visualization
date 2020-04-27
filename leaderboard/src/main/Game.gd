@@ -70,10 +70,10 @@ func _input(event):
 func showScene(sceneName="lobby"):
 	if sceneName in ["lobby","active","paused","stopped"]:
 		pass
-	if sceneName == "stopped":
-		$Scenes/stopped/Viewport/Stopped.checkTotals = true
 	else:
 		sceneName = "active"
+	if sceneName == "stopped":
+		$Scenes/stopped/Viewport/Stopped.checkTotals = true
 	for sc in $Scenes.get_children():
 		if sc.name != sceneName:
 			sc.visible = false
