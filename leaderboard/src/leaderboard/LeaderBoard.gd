@@ -1,8 +1,7 @@
 extends Node2D
-# http://leaderboard-aggregator-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard
-# http://127.0.0.1:8080/api/leaderboard
-var API_URL = JavaScript.eval("window.location.origin+'/api/leaderboard'") if OS.has_feature('JavaScript') else "http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard"
-#var API_URL = "http://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/api/leaderboard"
+
+# Replace {YOUR_SERVER_URL} for local dev
+var API_URL = JavaScript.eval("window.location.origin+'/api/leaderboard'") if OS.has_feature('JavaScript') else "http://{YOUR_SERVER_URL}/api/leaderboard"
 
 var Avatar = preload("res://src/avatar/Avatar.tscn");
 
@@ -10,7 +9,6 @@ var leaders = []
 var board = {}
 var correct = 0
 var incorrect = 0
-#var guesses = 0
 var players = 0
 var dollars = 0
 
@@ -32,7 +30,6 @@ func formatNumber(num):
 		if i%3 == 0 and i != 0:
 			delimited = "," + delimited
 		delimited = strNum[idx-i-1] + delimited
-	#print(delimited)
 	return String(delimited)
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
@@ -53,7 +50,6 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 			for current in $Leaders.get_children():
 				exists = false
 				for j in leaders.size():
-					#print(current.Key, " | ", leaders[j].pk)
 					exists = true if current.Key == int(leaders[j].pk) else exists
 				if !exists:
 					board.erase(current.Key)
@@ -83,9 +79,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 					$Tween.interpolate_property(av, "position", av.position, $Ladder.get_child(i).position, 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 					$Tween.start()
 				else:
-					#print("Creating ",leader.id)
 					av = Avatar.instance()
-					#var aui = AvatarUI.instance()
 					emote = 0 if newRank == av.Rank else 1
 					emote = 2 if newRank > av.Rank else emote
 					av.Key = leader.pk
@@ -104,14 +98,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 					av.position = $Ladder.get_child(i).position
 					board[leader.pk] = av
 					$Leaders.add_child(av)
-	#				$Leaders.add_child(aui)
 		else:
 			for n in $Leaders.get_children():
 				$Leaders.remove_child(n)
 				n.queue_free()
-
-func parseData(data):
-	pass
-	
-func getData():
-	pass

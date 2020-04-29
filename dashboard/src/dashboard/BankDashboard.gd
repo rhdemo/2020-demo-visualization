@@ -8,9 +8,6 @@ var edge_scale = 0.35
 var scene = 0
 var ldnEdges
 
-
-#WS URL ws://ui-admin-hq.apps.summit-hq1.openshift.redhatkeynote.com/socket
-
 func _ready():
 	 ldnEdges = $HQ/Banks/London/Edges.get_children()
 
@@ -40,17 +37,6 @@ func _input(event):
 				for edge in bank.get_node("Edges").get_children():
 					$Tween.interpolate_property(edge.get_node("Sprite"), "scale", edge.get_node("Sprite").scale, Vector2(edge_scale,edge_scale), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 			$Tween.start()
-#		if event.pressed and event.scancode == KEY_1:
-#			pass
-#		if event.pressed and event.scancode == KEY_2:
-#			$HQ.play("build",true)
-#		if event.pressed and event.scancode == KEY_3:
-#			$London.play("build")
-#		if event.pressed and event.scancode == KEY_4:
-#			$London.play("build",true)
-#		if event.pressed and event.scancode == KEY_X:
-#			pass
-#		
 
 func run_scene(scene,reverse):
 	match scene:

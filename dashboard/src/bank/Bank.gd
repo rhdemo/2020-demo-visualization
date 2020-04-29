@@ -23,26 +23,6 @@ func _ready():
 			RADII = Vector2(40, 25)
 	destination = get_parent().position
 	$Link.setLinkPoints(self.position, destination, 48, RADII, topRadii, Building != BLDG.Headquarters)
-	
-#func setLinkPoints():
-#	var segments = 20
-#	var angle = atan2(destination.y-origin.y, destination.x-origin.x)
-#	var pts = PoolVector2Array([])
-#	for seg in range(segments):
-#		pts.append(Vector2(destination.x+(RADII.x*cos(angle + (2*PI*((1.0+seg)/segments)))), destination.y+(RADII.y*sin(angle + (2*PI*((1.0+seg)/segments))))))
-#	if Building != BLDG.Headquarters:
-#		pts.append(-Vector2(self.position.x+(topRadii.x*cos(angle)), self.position.y+(topRadii.y*sin(angle))))
-#	$Link.clear_points()
-#	for pt in pts:
-#		$Link.add_point(pt)
-#		$Link/DataPath.curve.add_point(pt)
-
-#func on_input_event(camera, event, click_position, click_normal, shape_idx):
-#	var mouse_click = event as InputEventMouseButton
-#	if mouse_click and mouse_click.button_index == 1 and mouse_click.pressed:
-#		toggle_Data()
-		#for i in range(5):
-		#self.Locale = rng.randi_range(0,2)
 
 func buildEdges(rev=false):
 	var edgeCont = find_node('Edges')

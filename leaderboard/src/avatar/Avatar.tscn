@@ -59,7 +59,6 @@ material = ExtResource( 7 )
 z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
-frame = 1
 
 [node name="Nose" type="AnimatedSprite" parent="."]
 show_behind_parent = true

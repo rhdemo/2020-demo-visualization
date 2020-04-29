@@ -3,13 +3,15 @@ extends Node2D
 var ws = WebSocketClient.new()
 var _write_mode = WebSocketPeer.WRITE_MODE_TEXT
 var retryTimeout = 5 # seconds
-var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/socket'") if OS.has_feature('JavaScript') else "ws://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/socket"
+# Replace {YOUR_SERVER_URL} for local dev
+var wsUrlStr: String = JavaScript.eval("window.location.hostname+'/socket'") if OS.has_feature('JavaScript') else "ws://{YOUR_SERVER_URL}/socket"
 var Lobby = preload("res://src/lobby/Lobby.tscn");
 var Leaderboard = preload("res://src/leaderboard/LeaderBoard.tscn");
 var Paused = preload("res://src/paused/Paused.tscn");
 var Stopped = preload("res://src/stopped/Stopped.tscn");
 
-var WS_URL = wsUrlStr if wsUrlStr.length() > 0 else "ws://ui-leaderboard.apps.summit-hq1.openshift.redhatkeynote.com/socket"
+# Replace {YOUR_SERVER_URL} for local dev
+var WS_URL = wsUrlStr if wsUrlStr.length() > 0 else "ws://{YOUR_SERVER_URL}/socket"
 
 func _init():
 	self._connect()
@@ -37,9 +39,7 @@ func _handle_data_received():
 	var res = JSON.parse(decode_data(ws.get_peer(1).get_packet())).result
 	if 'game' in res:
 		if 'state' in res.game:
-			#print('Game State: ',res.game.state)
 			showScene(res.game.state)
-			# lobby, active, paused, stopped
 
 func _connection_established(protocol):
 	ws.get_peer(1).set_write_mode(_write_mode)
